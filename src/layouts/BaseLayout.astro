@@ -40,9 +40,9 @@ const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
     <header style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="font-size: 20px;">📊</span>
-        <span style="font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;">
+        <a href="/" style="text-decoration: none; font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;">
           The<span style="color: var(--accent);">Close</span>Report
-        </span>
+        </a>
       </div>
       <button id="theme-toggle" style="background: var(--border); border: none; border-radius: 20px; padding: 8px 16px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600;">
         🌙 Dark
@@ -54,18 +54,15 @@ const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
     </main>
 
     <footer style="background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; color: var(--muted); font-size: 12px;">
-      ©️ 2026 TheCloseReport.com · Daily Global Markets Snapshot
+      © 2026 TheCloseReport.com · Daily Global Markets Snapshot
     </footer>
 
     <script>
       const toggle = document.getElementById('theme-toggle');
       const html = document.documentElement;
-      
-      // Load saved preference
       const saved = localStorage.getItem('theme') || 'dark';
       html.setAttribute('data-theme', saved);
       toggle.textContent = saved === 'dark' ? '☀️ Light' : '🌙 Dark';
-
       toggle.addEventListener('click', () => {
         const current = html.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
