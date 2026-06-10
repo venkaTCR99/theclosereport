@@ -1,0 +1,78 @@
+---
+const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
+---
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <style is:global>
+      :root[data-theme="dark"] {
+        --bg: #020817;
+        --surface: #0f172a;
+        --border: #1e293b;
+        --text: #f1f5f9;
+        --muted: #64748b;
+        --up: #10b981;
+        --down: #ef4444;
+        --accent: #3b82f6;
+      }
+      :root[data-theme="light"] {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #64748b;
+        --up: #10b981;
+        --down: #ef4444;
+        --accent: #3b82f6;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        transition: background 0.3s, color 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 20px;">📊</span>
+        <span style="font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;">
+          The<span style="color: var(--accent);">Close</span>Report
+        </span>
+      </div>
+      <button id="theme-toggle" style="background: var(--border); border: none; border-radius: 20px; padding: 8px 16px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600;">
+        🌙 Dark
+      </button>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer style="background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; color: var(--muted); font-size: 12px;">
+      ©️ 2026 TheCloseReport.com · Daily Global Markets Snapshot
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      
+      // Load saved preference
+      const saved = localStorage.getItem('theme') || 'dark';
+      html.setAttribute('data-theme', saved);
+      toggle.textContent = saved === 'dark' ? '☀️ Light' : '🌙 Dark';
+
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+      });
+    </script>
+  </body>
+</html>

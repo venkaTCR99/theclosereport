@@ -1,17 +1,24 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MarketsDashboard from '../components/react/MarketsDashboard.jsx';
 ---
+<BaseLayout>
+  <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px 0;">
+    <div style="text-align: center; padding: 40px 0 32px;">
+      <div style="color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+        Daily Global Markets Snapshot
+      </div>
+      <h1 style="font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px;">
+        The<span style="color: var(--accent);">Close</span>Report
+      </h1>
+      <p style="color: var(--muted); font-size: 16px; max-width: 500px; margin: 0 auto 8px;">
+        Previous day closing prices, analysis and insights across global markets.
+      </p>
+      <p style="color: var(--muted); font-size: 13px;">
+        📅 Reporting on: <strong style="color: var(--text);">Monday, June 8, 2026</strong>
+      </p>
+    </div>
+  </div>
 
-<html lang="en">
-	<head>
-		<meta charset="UTF=8"/>
-		<meta name="viewport" content="width=device-width"/>
-		<meta name="description" content="TheCloseReport - Daily Global Markets Snapshot"/>
-		<title>TheCloseReport | Daily Markets Snapshot</title>
-		</head>
-		<body>
-		 <h1>TheCloseReport is coming soon... </h1>
-		 </body>
-</html>
-
-	
+  <MarketsDashboard client:load />
+</BaseLayout>
