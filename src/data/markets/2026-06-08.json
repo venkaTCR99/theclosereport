@@ -1,0 +1,17 @@
+{
+  "date": "2026-06-08",
+  "indices": {
+    "dow": { "close": 50786, "change": -81, "pct": -0.16, "open": 50600, "high": 50920, "low": 50580 },
+    "sp500": { "close": 7406, "change": 22, "pct": 0.30, "open": 7310, "high": 7435, "low": 7290 },
+    "nasdaq": { "close": 25930, "change": 220, "pct": 0.86, "open": 25500, "high": 25990, "low": 25480 },
+    "sensex": { "close": 73520, "change": -718, "pct": -0.97, "open": 74100, "high": 74200, "low": 73380 },
+    "sse": { "close": 3959, "change": -68, "pct": -1.70, "open": 4020, "high": 4025, "low": 3950 },
+    "szse": { "close": 14821, "change": -493, "pct": -3.22, "open": 15200, "high": 15210, "low": 14790 },
+    "nikkei": { "close": 64025, "change": -2564, "pct": -3.85, "open": 66000, "high": 66100, "low": 63900 },
+    "kospi": { "close": 7780, "change": -381, "pct": -4.66, "open": 8100, "high": 8110, "low": 7700 },
+    "ftse": { "close": 10372, "change": 3, "pct": 0.04, "open": 10340, "high": 10395, "low": 10330 },
+    "dax": { "close": 24759, "change": -188, "pct": -0.75, "open": 24900, "high": 24920, "low": 24740 },
+    "cac": { "close": 8218, "change": -26, "pct": -0.32, "open": 8230, "high": 8245, "low": 8205 },
+    "stoxx": { "close": 6062, "change": -41, "pct": -0.68, "open": 6095, "high": 6100, "low": 6048 }
+  }
+}
