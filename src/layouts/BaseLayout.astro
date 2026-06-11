@@ -44,6 +44,12 @@ const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
           The<span style="color: var(--accent);">Close</span>Report
         </a>
       </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+        <button onclick="setLang('en')" id="lang-en" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">EN</button>
+        <button onclick="setLang('hi')" id="lang-hi" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">हि</button>
+        <button onclick="setLang('te')" id="lang-te" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">తె</button>
+        <button onclick="setLang('ta')" id="lang-ta" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">த</button>
+      </div>
       <button id="theme-toggle" style="background: var(--border); border: none; border-radius: 20px; padding: 8px 16px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600;">
         🌙 Dark
       </button>
@@ -70,6 +76,22 @@ const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
         localStorage.setItem('theme', next);
         toggle.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
       });
+      // Language toggle
+        window.setLang = function(lang) {
+        localStorage.setItem('lang', lang);
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('[id^="lang-"]').forEach(btn => {
+        btn.style.background = 'none';
+        btn.style.color = 'var(--text)';
+        });
+        document.getElementById(`lang-${lang}`).style.background = 'var(--accent)';
+        document.getElementById(`lang-${lang}`).style.color = '#fff';
+        window.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
+        }
+
+        // Load saved language
+        const savedLang = localStorage.getItem('lang') || 'en';
+        setLang(savedLang);
     </script>
   </body>
 </html>

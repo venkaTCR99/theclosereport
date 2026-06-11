@@ -4,7 +4,6 @@ import MarketsDashboard from '../components/react/MarketsDashboard.jsx';
 import fs from 'fs';
 import path from 'path';
 
-// Find the latest JSON data file
 const dataDir = path.join(process.cwd(), 'src/data/markets');
 const files = fs.readdirSync(dataDir)
   .filter(f => f.endsWith('.json'))
@@ -19,7 +18,6 @@ const latestData = JSON.parse(
 const reportDate = latestData.date;
 const indices = latestData.indices;
 
-// Format date for display
 const formatted = new Date(reportDate + 'T00:00:00')
   .toLocaleDateString('en-US', { 
     weekday: 'long', 
@@ -32,20 +30,66 @@ const formatted = new Date(reportDate + 'T00:00:00')
 <BaseLayout>
   <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px 0;">
     <div style="text-align: center; padding: 40px 0 32px;">
-      <div style="color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+      
+      <div id="hero-tagline" style="color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
         Daily Global Markets Snapshot
       </div>
+      
       <h1 style="font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px;">
         The<span style="color: var(--accent);">Close</span>Report
       </h1>
-      <p style="color: var(--muted); font-size: 16px; max-width: 500px; margin: 0 auto 8px;">
+      
+      <p id="hero-description" style="color: var(--muted); font-size: 16px; max-width: 500px; margin: 0 auto 8px;">
         Previous day closing prices, analysis and insights across global markets.
       </p>
+      
       <p style="color: var(--muted); font-size: 13px;">
-        📅 Reporting on: <strong style="color: var(--text);">{formatted}</strong>
+        <span id="hero-reporting">Reporting on</span>: <strong style="color: var(--text);">{formatted}</strong>
       </p>
+
     </div>
   </div>
 
   <MarketsDashboard client:load data={JSON.stringify(indices)} date={reportDate} />
 </BaseLayout>
+
+<script>
+  const translations = {
+    en: {
+      tagline: "Daily Global Markets Snapshot",
+      description: "Previous day closing prices, analysis and insights across global markets.",
+      reporting: "Reporting on",
+    },
+    hi: {
+      tagline: "दैनिक वैश्विक बाज़ार स्नैपशॉट",
+      description: "पिछले दिन के समापन मूल्य, विश्लेषण और वैश्विक बाज़ारों की जानकारी।",
+      reporting: "रिपोर्टिंग",
+    },
+    te: {
+      tagline: "రోజువారీ గ్లోబల్ మార్కెట్ స్నాప్‌షాట్",
+      description: "మునుపటి రోజు ముగింపు ధరలు, విశ్లేషణ మరియు అంతర్జాతీయ మార్కెట్ అంతర్దృష్టులు.",
+      reporting: "నివేదిక తేదీ",
+    },
+    ta: {
+      tagline: "தினசரி உலக சந்தை சுருக்கம்",
+      description: "முந்தைய நாள் இறுதி விலகள், பகுப்பாய்வு மற்றும் உலக சந்தை நுண்ணறிவு.",
+      reporting: "அறிக்கை தேதி",
+    },
+  };
+
+  function applyTranslation(lang) {
+    const t = translations[lang] || translations.en;
+    document.getElementById('hero-tagline').textContent = t.tagline;
+    document.getElementById('hero-description').textContent = t.description;
+    document.getElementById('hero-reporting').textContent = t.reporting;
+  }
+
+  // Apply on language change
+  window.addEventListener('langchange', (e) => {
+    applyTranslation(e.detail);
+  });
+
+  // Apply saved language on load
+  const savedLang = localStorage.getItem('lang') || 'en';
+  applyTranslation(savedLang);
+</script>
