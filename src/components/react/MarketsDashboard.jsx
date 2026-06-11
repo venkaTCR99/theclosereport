@@ -320,8 +320,14 @@ export default function MarketsDashboard({ data, date }) {
           ◆ Executive Summary
         </div>
         <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
-          Monday, June 8, 2026 was shaped by three forces: Wall Street's chip rout from Friday; a blowout U.S. May jobs report of 172,000 reigniting Fed rate-hike fears and pushing the 10-year Treasury yield to 4.54%; and fresh Middle East escalation as Iran launched missiles at Israel. Asia absorbed the sharpest pain — South Korea's KOSPI triggered a circuit breaker, Japan's Nikkei fell nearly 4%, China's Shenzhen slid 3.2%. Wall Street managed a partial recovery led by bargain hunting in semiconductors. Globally, only 3 of 12 tracked indices closed positive.
-        </p>
+          {(() => {
+            const up = mergedIndices.filter(i => i.pct >= 0).length;
+            const down = mergedIndices.filter(i => i.pct < 0).length;
+            const best = [...mergedIndices].sort((a, b) => b.pct - a.pct)[0];
+            const worst = [...mergedIndices].sort((a, b) => a.pct - b.pct)[0];
+            return `Global markets closed mixed on ${date}. ${up} of 12 indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
+  })()}
+</p>
       </div>
     </div>
   );
