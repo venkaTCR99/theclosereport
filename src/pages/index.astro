@@ -1,7 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MarketsDashboard from '../components/react/MarketsDashboard.jsx';
+import fs from 'fs';
+import path from 'path';
+
+// Find the latest JSON data file
+const dataDir = path.join(process.cwd(), 'src/data/markets');
+const files = fs.readdirSync(dataDir)
+  .filter(f => f.endsWith('.json'))
+  .sort()
+  .reverse();
+
+const latestFile = files[0];
+const latestData = JSON.parse(
+  fs.readFileSync(path.join(dataDir, latestFile), 'utf-8')
+);
+
+const reportDate = latestData.date;
+const indices = latestData.indices;
+
+// Format date for display
+const formatted = new Date(reportDate + 'T00:00:00')
+  .toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
 ---
+
 <BaseLayout>
   <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px 0;">
     <div style="text-align: center; padding: 40px 0 32px;">
@@ -15,10 +42,10 @@ import MarketsDashboard from '../components/react/MarketsDashboard.jsx';
         Previous day closing prices, analysis and insights across global markets.
       </p>
       <p style="color: var(--muted); font-size: 13px;">
-        📅 Reporting on: <strong style="color: var(--text);">Monday, June 8, 2026</strong>
+        📅 Reporting on: <strong style="color: var(--text);">{formatted}</strong>
       </p>
     </div>
   </div>
 
-  <MarketsDashboard client:load />
+  <MarketsDashboard client:load data={JSON.stringify(indices)} date={reportDate} />
 </BaseLayout>

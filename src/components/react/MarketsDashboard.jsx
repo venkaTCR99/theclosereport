@@ -235,10 +235,23 @@ const IndexCard = ({ idx }) => {
   );
 };
 
-export default function MarketsDashboard() {
+export default function MarketsDashboard({ data, date }) {
+  const realData = data ? JSON.parse(data) : null;
   const [region, setRegion] = useState("All");
-
-  const filtered = region === "All" ? INDICES : INDICES.filter(i => i.region === region);
+  const mergedIndices = INDICES.map(idx => {
+  if (realData && realData[idx.id]) {
+    const real = realData[idx.id];
+    return {
+      ...idx,
+      close: real.close,
+      change: real.change,
+      pct: real.pct,
+      prev: real.close - real.change,
+    };
+  }
+  return idx;
+});
+  const filtered = region === "All" ? mergedIndices : mergedIndices.filter(i => i.region === region);
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 40px" }}>
@@ -259,7 +272,7 @@ export default function MarketsDashboard() {
             </tr>
           </thead>
           <tbody>
-            {INDICES.map((idx, i) => (
+            {mergedIndices.map((idx, i) => (
               <tr key={idx.id} style={{ borderBottom: i < INDICES.length - 1 ? "1px solid var(--border)" : "none" }}>
                 <td style={{ padding: "9px 16px", fontSize: 13, color: "var(--text)" }}>
                   {idx.country.split(" ")[0]} {idx.name}
