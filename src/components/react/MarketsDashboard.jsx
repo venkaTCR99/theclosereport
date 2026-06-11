@@ -260,7 +260,7 @@ export default function MarketsDashboard({ data, date }) {
       <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden", marginBottom: 24 }}>
         <div style={{ padding: "12px 16px", borderBottom: "1px solid var(--border)" }}>
           <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 700 }}>
-            Day Snapshot — June 8, 2026
+            Day Snapshot — {date || "June 11, 2026"}
           </span>
         </div>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
