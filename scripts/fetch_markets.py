@@ -1,52 +1,50 @@
-import requests
 import json
 import os
-from datetime import date, datetime
+import urllib.request
+from datetime import date
 
-# API Key from environment variable
-API_KEY = os.environ.get("TWELVE_DATA_API_KEY")
-
-# Today's date
 TODAY = date.today().isoformat()
 
-# Index symbols for Twelve Data API
 INDICES = {
-    "dow":    "DJI",
-    "sp500":  "SPX",
-    "nasdaq": "IXIC",
-    "sensex": "BSE:SENSEX",
-    "sse":    "SSEC",
-    "szse":   "399001",
-    "nikkei": "JP225",
-    "kospi":  "KOSPI",
-    "ftse":   "UK100",
-    "dax":    "GER40",
-    "cac":    "FRA40",
-    "stoxx":  "EU50",
+    "dow":    "^DJI",
+    "sp500":  "^GSPC",
+    "nasdaq": "^IXIC",
+    "sensex": "^BSESN",
+    "sse":    "000001.SS",
+    "szse":   "399001.SZ",
+    "nikkei": "^N225",
+    "kospi":  "^KS11",
+    "ftse":   "^FTSE",
+    "dax":    "^GDAXI",
+    "cac":    "^FCHI",
+    "stoxx":  "^STOXX50E",
 }
 
 def fetch_quote(symbol):
-    """Fetch quote data from Twelve Data API"""
     try:
-        url = "https://api.twelvedata.com/quote"
-        params = {
-            "symbol": symbol,
-            "apikey": API_KEY,
-        }
-        response = requests.get(url, params=params, timeout=10)
-        data = response.json()
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d"
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read())
 
-        if "close" not in data:
-            print(f"❌ Error fetching {symbol}: {data}")
-            return None
+        result = data["chart"]["result"][0]
+        meta = result["meta"]
+
+        close = round(meta["regularMarketPrice"], 2)
+        prev_close = round(meta["chartPreviousClose"], 2)
+        change = round(close - prev_close, 2)
+        pct = round((change / prev_close) * 100, 2)
+        open_price = round(meta.get("regularMarketOpen", close), 2)
+        high = round(meta.get("regularMarketDayHigh", close), 2)
+        low = round(meta.get("regularMarketDayLow", close), 2)
 
         return {
-            "close":  round(float(data["close"]), 2),
-            "change": round(float(data["change"]), 2),
-            "pct":    round(float(data["percent_change"]), 2),
-            "open":   round(float(data["open"]), 2),
-            "high":   round(float(data["high"]), 2),
-            "low":    round(float(data["low"]), 2),
+            "close":  close,
+            "change": change,
+            "pct":    pct,
+            "open":   open_price,
+            "high":   high,
+            "low":    low,
         }
     except Exception as e:
         print(f"❌ Exception fetching {symbol}: {e}")

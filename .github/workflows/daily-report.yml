@@ -27,8 +27,6 @@ jobs:
         run: pip install requests
 
       - name: Fetch market data
-        env:
-          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
         run: python scripts/fetch_markets.py
 
       - name: Commit and push data
