@@ -37,23 +37,25 @@ const { title = "TheCloseReport | Daily Markets Snapshot" } = Astro.props;
     </style>
   </head>
   <body>
-    <header style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span style="font-size: 20px;">📊</span>
-        <a href="/" style="text-decoration: none; font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;">
-          The<span style="color: var(--accent);">Close</span>Report
-        </a>
-      </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-        <button onclick="setLang('en')" id="lang-en" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">EN</button>
-        <button onclick="setLang('hi')" id="lang-hi" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">हि</button>
-        <button onclick="setLang('te')" id="lang-te" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">తె</button>
-        <button onclick="setLang('ta')" id="lang-ta" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; font-weight: 600;">த</button>
-      </div>
-      <button id="theme-toggle" style="background: var(--border); border: none; border-radius: 20px; padding: 8px 16px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600;">
-        🌙 Dark
+    <header style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 16px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+    <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 18px;">📊</span>
+      <span style="font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;">
+        The<span style="color: var(--accent);">Close</span>Report
+      </span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 5px;">
+      <button onclick="window.setLang('en')" id="lang-en" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 3px 8px; color: var(--text); cursor: pointer; font-size: 10px; font-weight: 600;">EN</button>
+      <button onclick="window.setLang('hi')" id="lang-hi" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 3px 8px; color: var(--text); cursor: pointer; font-size: 10px; font-weight: 600;">हि</button>
+      <button onclick="window.setLang('te')" id="lang-te" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 3px 8px; color: var(--text); cursor: pointer; font-size: 10px; font-weight: 600;">తె</button>
+      <button onclick="window.setLang('ta')" id="lang-ta" style="background: none; border: 1px solid var(--border); border-radius: 20px; padding: 3px 8px; color: var(--text); cursor: pointer; font-size: 10px; font-weight: 600;">த</button>
+      <button id="theme-toggle" style="background: var(--border); border: none; border-radius: 20px; padding: 4px 10px; color: var(--text); cursor: pointer; font-size: 10px; font-weight: 600;">
+        🌙
       </button>
-    </header>
+    </div>
+  </div>
+      </header>
 
     <main>
       <slot />
