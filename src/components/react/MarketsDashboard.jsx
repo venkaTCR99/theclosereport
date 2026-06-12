@@ -170,7 +170,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const IndexCard = ({ idx }) => {
+const IndexCard = ({ idx, date }) => {
   const isUp = idx.pct >= 0;
   const color = isUp ? "#10b981" : "#ef4444";
   const minV = Math.min(...idx.intraday.map(d => d.v));
@@ -219,15 +219,19 @@ const IndexCard = ({ idx }) => {
 
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "var(--muted)", marginBottom: 10 }}>
         <span>{idx.intraday[0].t}</span>
-        <span>June 8, 2026</span>
+        <span>{date || "Today"}</span>
         <span>{idx.intraday[idx.intraday.length - 1].t}</span>
       </div>
 
       <div style={{ borderTop: "1px solid var(--border)", paddingTop: 10 }}>
-        {idx.highlights.map((h, i) => (
+        {[
+          `${idx.pct >= 0 ? "Gained" : "Declined"} ${Math.abs(idx.pct)}% on the day`,
+          `Closed at ${idx.close.toLocaleString()} — ${idx.pct >= 0 ? "above" : "below"} previous session`,
+          `${Math.abs(idx.pct) > 2 ? "High volatility session" : Math.abs(idx.pct) > 1 ? "Moderate movement" : "Relatively stable session"}`,
+        ].map((h, i) => (
           <div key={i} style={{ display: "flex", gap: 7, marginBottom: 4 }}>
-            <span style={{ color: idx.color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>◆</span>
-            <span style={{ color: "var(--muted)", fontSize: 12, lineHeight: 1.4 }}>{h}</span>
+          <span style={{ color: idx.color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>◆</span>
+          <span style={{ color: "var(--muted)", fontSize: 12, lineHeight: 1.4 }}>{h}</span>
           </div>
         ))}
       </div>
@@ -309,7 +313,7 @@ export default function MarketsDashboard({ data, date }) {
       </div>
 
       {/* Index Cards */}
-      {filtered.map(idx => <IndexCard key={idx.id} idx={idx} />)}
+      {filtered.map(idx => <IndexCard key={idx.id} idx={idx} date={date} />)}
 
       {/* Summary */}
       <div style={{
