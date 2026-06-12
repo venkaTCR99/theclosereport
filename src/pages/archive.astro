@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import fs from 'fs';
+import path from 'path';
+
+// Get all data files
+const dataDir = path.join(process.cwd(), 'src/data/markets');
+const files = fs.readdirSync(dataDir)
+  .filter(f => f.endsWith('.json'))
+  .sort()
+  .reverse();
+
+// Load all reports
+const reports = files.map(file => {
+  const data = JSON.parse(
+    fs.readFileSync(path.join(dataDir, file), 'utf-8')
+  );
+  
+  const date = data.date;
+  const indices = data.indices;
+  
+  // Calculate stats
+  const indexList = Object.values(indices);
+  const up = indexList.filter(i => i.pct >= 0).length;
+  const down = indexList.filter(i => i.pct < 0).length;
+  const best = indexList.length > 0 ? [...indexList].sort((a, b) => b.pct - a.pct)[0] : null;
+  const worst = indexList.length > 0 ? [...indexList].sort((a, b) => a.pct - b.pct)[0] : null;
+  
+  const formatted = new Date(date + 'T00:00:00')
+    .toLocaleDateString('en-US', { 
+      weekday: 'short',
+      year: 'numeric', 
+      month: 'short', 
+      day: 'numeric' 
+    });
+
+  return { date, formatted, up, down, best, worst, total: indexList.length };
+});
+---
+
+<BaseLayout title="Archive | TheCloseReport">
+  <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px;">
+    
+    <!-- Header -->
+    <div style="margin-bottom: 32px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+        Market Archive
+      </div>
+      <h1 style="font-size: 32px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 8px;">
+        Previous Reports
+      </h1>
+      <p style="color: var(--muted); font-size: 14px;">
+        Browse all previous daily market snapshots
+      </p>
+    </div>
+
+    <!-- Archive Cards -->
+    <div>
+      {reports.map(report => (
+        <a href={`/archive/${report.date}`} style="text-decoration: none;">
+          <div style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: 12,
+            padding: "16px 20px",
+            marginBottom: 12,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            cursor: "pointer",
+            transition: "border-color 0.2s",
+          }}>
+            
+            <!-- Date & Stats -->
+            <div>
+              <div style="color: var(--text); font-size: 15px; font-weight: 700; margin-bottom: 4px;">
+                {report.formatted}
+              </div>
+              <div style="color: var(--muted); font-size: 12px;">
+                {report.total > 0 ? `${report.up} up · ${report.down} down` : 'No data'}
+              </div>
+            </div>
+
+            <!-- Best/Worst -->
+            {report.best && report.worst && (
+              <div style="text-align: right;">
+                <div style="color: #10b981; font-size: 12px; font-weight: 600; margin-bottom: 2px;">
+                  ▲ Best: {report.best.pct > 0 ? '+' : ''}{report.best.pct}%
+                </div>
+                <div style="color: #ef4444; font-size: 12px; font-weight: 600;">
+                  ▼ Worst: {report.worst.pct}%
+                </div>
+              </div>
+            )}
+
+            <!-- Arrow -->
+            <div style="color: var(--muted); font-size: 18px; margin-left: 16px;">
+              →
+            </div>
+
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {reports.length === 0 && (
+      <div style="text-align: center; color: var(--muted); padding: 60px 0;">
+        No reports yet. Check back after market close!
+      </div>
+    )}
+
+  </div>
+</BaseLayout>

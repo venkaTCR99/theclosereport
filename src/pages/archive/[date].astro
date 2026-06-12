@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MarketsDashboard from '../../components/react/MarketsDashboard.jsx';
+import fs from 'fs';
+import path from 'path';
+
+const { date } = Astro.params;
+
+// Load data for this specific date
+const filePath = path.join(process.cwd(), `src/data/markets/${date}.json`);
+
+let data = null;
+let error = false;
+
+try {
+  data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+} catch (e) {
+  error = true;
+}
+
+const indices = data?.indices || {};
+
+const formatted = data ? new Date(date + 'T00:00:00')
+  .toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  }) : date;
+
+export async function getStaticPaths() {
+  const dataDir = path.join(process.cwd(), 'src/data/markets');
+  const files = fs.readdirSync(dataDir)
+    .filter(f => f.endsWith('.json'));
+  
+  return files.map(file => ({
+    params: { date: file.replace('.json', '') }
+  }));
+}
+---
+
+<BaseLayout title={`${formatted} | TheCloseReport`}>
+  <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px 0;">
+    
+    <!-- Back button -->
+    <a href="/archive" style="color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px;">
+      ← Back to Archive
+    </a>
+
+    {error ? (
+      <div style="text-align: center; color: var(--muted); padding: 60px 0;">
+        <p>No data found for {date}</p>
+        <a href="/archive" style="color: var(--accent);">← Back to Archive</a>
+      </div>
+    ) : (
+      <div style="text-align: center; padding: 20px 0 32px;">
+        <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+          Archive Report
+        </div>
+        <h1 style="font-size: clamp(24px, 6vw, 36px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;">
+          {formatted}
+        </h1>
+        <p style="color: var(--muted); font-size: 13px;">
+          Historical market snapshot — TheCloseReport
+        </p>
+      </div>
+    )}
+  </div>
+
+  {!error && (
+    <MarketsDashboard client:load data={JSON.stringify(indices)} date={date} />
+  )}
+</BaseLayout>
