@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Newsletter | TheCloseReport">
+  <div style="max-width: 600px; margin: 0 auto; padding: 60px 24px;">
+    
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+        Stay Informed
+      </div>
+      <h1 style="font-size: clamp(28px, 6vw, 36px); font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 12px;">
+        Daily Markets Newsletter
+      </h1>
+      <p style="color: var(--muted); font-size: 15px; line-height: 1.6;">
+        Get TheCloseReport delivered to your inbox every day after market close. 
+        Real data, zero noise.
+      </p>
+    </div>
+
+    <!-- What you get -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+      <div style="font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 16px;">
+        What you get every day:
+      </div>
+      {[
+        "📊 All 12 global indices — closing prices",
+        "🟢 Top gainers & biggest decliners",
+        "📝 Executive market summary",
+        "🌍 Asia, Europe & US markets covered",
+        "⚡ Delivered by 6PM IST daily",
+      ].map(item => (
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--muted); font-size: 13px;">
+          {item}
+        </div>
+      ))}
+    </div>
+
+    <!-- Subscription Form -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+      <div id="form-container">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">
+            Your Email Address
+          </label>
+          <input 
+            type="email" 
+            id="email-input"
+            placeholder="you@example.com"
+            style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 14px; outline: none; box-sizing: border-box;"
+          />
+        </div>
+        <button 
+          id="subscribe-btn"
+          style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--accent); color: white; font-size: 14px; font-weight: 700; cursor: pointer;">
+          Subscribe — It's Free 🚀
+        </button>
+        <div id="message" style="margin-top: 12px; text-align: center; font-size: 13px;"></div>
+      </div>
+
+      <div style="text-align: center; margin-top: 16px; color: var(--muted); font-size: 11px;">
+        No spam. Unsubscribe anytime.
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  const btn = document.getElementById('subscribe-btn');
+  const input = document.getElementById('email-input');
+  const message = document.getElementById('message');
+
+  btn.addEventListener('click', async () => {
+    const email = input.value.trim();
+    
+    if (!email || !email.includes('@')) {
+      message.style.color = '#ef4444';
+      message.textContent = '⚠️ Please enter a valid email address';
+      return;
+    }
+
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        message.style.color = '#10b981';
+        message.textContent = '✅ Successfully subscribed! Check your inbox.';
+        input.value = '';
+        btn.textContent = 'Subscribed! ✅';
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (err) {
+      message.style.color = '#ef4444';
+      message.textContent = `❌ ${err.message}`;
+      btn.textContent = 'Subscribe — It\'s Free 🚀';
+      btn.disabled = false;
+    }
+  });
+</script>
