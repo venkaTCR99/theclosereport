@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About | TheCloseReport">
+  <div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
+
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+        About Us
+      </div>
+      <h1 style="font-size: clamp(28px, 6vw, 42px); font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 16px;">
+        The<span style="color: var(--accent);">Close</span>Report
+      </h1>
+      <p style="color: var(--muted); font-size: 16px; line-height: 1.7; max-width: 560px; margin: 0 auto;">
+        A daily snapshot of global financial markets — delivered automatically, every trading day.
+      </p>
+    </div>
+
+    <!-- Mission -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+        Our Mission
+      </div>
+      <p style="color: var(--text); font-size: 15px; line-height: 1.8; margin: 0;">
+        TheCloseReport exists to make global market data accessible to everyone — 
+        not just Wall Street professionals. We believe every investor, student, and 
+        curious mind deserves a clean, simple, daily snapshot of how the world's 
+        markets performed. No noise. No speculation. Just the close.
+      </p>
+    </div>
+
+    <!-- What we cover -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
+        What We Cover
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        {[
+          { flag: "🇺🇸", name: "United States", indices: "Dow Jones, S&P 500, Nasdaq" },
+          { flag: "🇮🇳", name: "India", indices: "BSE Sensex" },
+          { flag: "🇨🇳", name: "China", indices: "Shanghai SSE, Shenzhen" },
+          { flag: "🇯", name: "Japan", indices: "Nikkei 225" },
+          { flag: "🇰🇷", name: "South Korea", indices: "KOSPI" },
+          { flag: "🇬🇧", name: "United Kingdom", indices: "FTSE 100" },
+          { flag: "🇩🇪", name: "Germany", indices: "DAX" },
+          { flag: "🇫🇷", name: "France", indices: "CAC 40" },
+          { flag: "🇪🇺", name: "Europe", indices: "Euro Stoxx 50" },
+        ].map(item => (
+          <div style="padding: 16px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border);">
+            <div style="font-size: 24px; margin-bottom: 6px;">{item.flag}</div>
+            <div style="color: var(--text); font-size: 13px; font-weight: 700; margin-bottom: 4px;">{item.name}</div>
+            <div style="color: var(--muted); font-size: 12px;">{item.indices}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
+        How It Works
+      </div>
+      {[
+        { time: "4:00 PM IST", desc: "Asian & Indian markets close — data fetched automatically" },
+        { time: "12:30 AM IST", desc: "US & European markets close — data updated automatically" },
+        { time: "Every day", desc: "Archive updated — all historical data preserved forever" },
+        { time: "On subscribe", desc: "Welcome email sent — daily newsletter coming soon" },
+      ].map((item, i) => (
+        <div style="display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;">
+          <div style="background: var(--accent); color: white; borderRadius: 6px; padding: '4px 10px'; fontSize: 11; fontWeight: 700; whiteSpace: 'nowrap'; flexShrink: 0; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 700; white-space: nowrap; flex-shrink: 0;">
+            {item.time}
+          </div>
+          <div style="color: var(--muted); font-size: 14px; line-height: 1.5;">
+            {item.desc}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tech stack -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
+        Built With
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        {["Astro", "React", "Recharts", "GitHub Actions", "Vercel", "Yahoo Finance", "Resend"].map(tech => (
+          <span style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--text);">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+        Get In Touch
+      </div>
+      <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">
+        Questions, feedback or suggestions? We'd love to hear from you.
+      </p>
+      <a href="mailto:hello@theclosereport.com" 
+         style="display: inline-block; padding: 12px 24px; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 14px;">
+        hello@theclosereport.com
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>
