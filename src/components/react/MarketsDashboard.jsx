@@ -217,9 +217,20 @@ const IndexCard = ({ idx, date }) => {
         </ResponsiveContainer>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "var(--muted)", marginBottom: 10 }}>
+     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "var(--muted)", marginBottom: 10 }}>
         <span>{idx.intraday[0].t}</span>
-        <span>{date || "Today"}</span>
+        <span style={{ color: "var(--accent)", fontSize: 10 }}>
+          {idx.fetchedAt 
+             ? `Captured: ${new Date(idx.fetchedAt).toLocaleString('en-IN', { 
+                 timeZone: 'Asia/Kolkata',
+                   month: 'short',
+                   day: 'numeric',
+                   hour: '2-digit',
+                   minute: '2-digit',
+              })} IST`
+            : date || "Today"
+          }
+        </span>
         <span>{idx.intraday[idx.intraday.length - 1].t}</span>
       </div>
 
@@ -323,13 +334,34 @@ export default function MarketsDashboard({ data, date }) {
         <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700, marginBottom: 10 }}>
           ◆ Executive Summary
         </div>
-        <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
-          {(() => {
-            const up = mergedIndices.filter(i => i.pct >= 0).length;
-            const down = mergedIndices.filter(i => i.pct < 0).length;
-            const best = [...mergedIndices].sort((a, b) => b.pct - a.pct)[0];
-            const worst = [...mergedIndices].sort((a, b) => a.pct - b.pct)[0];
-            return `Global markets closed mixed on ${date}. ${up} of 12 indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
+  <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
+  {(() => {
+    const up = mergedIndices.filter(i => i.pct >= 0).length;
+    const down = mergedIndices.filter(i => i.pct < 0).length;
+    const best = [...mergedIndices].sort((a, b) => b.pct - a.pct)[0];
+    const worst = [...mergedIndices].sort((a, b) => a.pct - b.pct)[0];
+
+    // Check which regions are updated
+    const asiaIndices = mergedIndices.filter(i => i.region === 'asia' || i.region === 'india');
+    const usaIndices = mergedIndices.filter(i => i.region === 'usa');
+    const euIndices = mergedIndices.filter(i => i.region === 'europe');
+
+    const asiaUpdated = asiaIndices.some(i => i.fetchedAt);
+    const usaUpdated = usaIndices.some(i => i.fetchedAt);
+    const euUpdated = euIndices.some(i => i.fetchedAt);
+    const allUpdated = asiaUpdated && usaUpdated && euUpdated;
+
+    if (allUpdated) {
+      return `Global markets closed mixed on ${date}. ${up} of 12 indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
+    } else if (asiaUpdated && !usaUpdated && !euUpdated) {
+      const asiaUp = asiaIndices.filter(i => i.pct >= 0).length;
+      const asiaDown = asiaIndices.filter(i => i.pct < 0).length;
+      return `Asian & Indian markets closed on ${date}. ${asiaUp} indices gained while ${asiaDown} declined. European and US markets data will update after their close.`;
+    } else if (asiaUpdated && euUpdated && !usaUpdated) {
+      return `Asian, Indian & European markets closed on ${date}. ${up} of 12 indices in positive territory so far. US markets data will update after close.`;
+    } else {
+      return `Market data for ${date} is being collected. Check back after 4PM IST for Asian markets and 12:30AM IST for US & European closing data.`;
+    }
   })()}
 </p>
       </div>
