@@ -31,6 +31,8 @@ USEU_INDICES = {
 # Determine which indices to fetch based on IST time
 IST_HOUR = NOW.hour
 IST_MINUTE = NOW.minute
+print(f"🕐 Current IST time: {NOW.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+print(f"🕐 IST Hour: {IST_HOUR}")
 
 # After 4PM IST and before 10PM IST → fetch Asia/India only
 # After 10PM IST or before 6AM IST → fetch US/EU only
