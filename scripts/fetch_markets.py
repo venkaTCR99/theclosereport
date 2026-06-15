@@ -9,20 +9,40 @@ NOW = datetime.now(IST)
 TODAY = NOW.date().isoformat()
 FETCHED_AT = NOW.isoformat()
 
-INDICES = {
+# Define indices with market close times
+ASIA_INDICES = {
+    "sensex": {"symbol": "^BSESN",   "region": "india"},
+    "sse":    {"symbol": "000001.SS", "region": "asia"},
+    "szse":   {"symbol": "399001.SZ", "region": "asia"},
+    "nikkei": {"symbol": "^N225",     "region": "asia"},
+    "kospi":  {"symbol": "^KS11",     "region": "asia"},
+}
+
+USEU_INDICES = {
     "dow":    {"symbol": "^DJI",      "region": "usa"},
     "sp500":  {"symbol": "^GSPC",     "region": "usa"},
     "nasdaq": {"symbol": "^IXIC",     "region": "usa"},
-    "sensex": {"symbol": "^BSESN",    "region": "india"},
-    "sse":    {"symbol": "000001.SS",  "region": "asia"},
-    "szse":   {"symbol": "399001.SZ",  "region": "asia"},
-    "nikkei": {"symbol": "^N225",      "region": "asia"},
-    "kospi":  {"symbol": "^KS11",      "region": "asia"},
-    "ftse":   {"symbol": "^FTSE",      "region": "europe"},
-    "dax":    {"symbol": "^GDAXI",     "region": "europe"},
-    "cac":    {"symbol": "^FCHI",      "region": "europe"},
-    "stoxx":  {"symbol": "^STOXX50E",  "region": "europe"},
+    "ftse":   {"symbol": "^FTSE",     "region": "europe"},
+    "dax":    {"symbol": "^GDAXI",    "region": "europe"},
+    "cac":    {"symbol": "^FCHI",     "region": "europe"},
+    "stoxx":  {"symbol": "^STOXX50E", "region": "europe"},
 }
+
+# Determine which indices to fetch based on IST time
+IST_HOUR = NOW.hour
+IST_MINUTE = NOW.minute
+
+# After 4PM IST and before 10PM IST → fetch Asia/India only
+# After 10PM IST or before 6AM IST → fetch US/EU only
+if 16 <= IST_HOUR < 22:
+    print(f"⏰ {IST_HOUR}:{IST_MINUTE} IST — Fetching Asian & Indian markets")
+    INDICES = ASIA_INDICES
+elif IST_HOUR >= 22 or IST_HOUR < 6:
+    print(f"⏰ {IST_HOUR}:{IST_MINUTE} IST — Fetching US & European markets")
+    INDICES = USEU_INDICES
+else:
+    print(f"⏰ {IST_HOUR}:{IST_MINUTE} IST — Fetching all markets")
+    INDICES = {**ASIA_INDICES, **USEU_INDICES}
 
 def fetch_quote(symbol):
     try:

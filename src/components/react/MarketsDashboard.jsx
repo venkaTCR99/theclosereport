@@ -262,6 +262,8 @@ export default function MarketsDashboard({ data, date }) {
       change: real.change,
       pct: real.pct,
       prev: real.close - real.change,
+      fetchedAt: real.fetchedAt,
+      region: real.region || idx.region,
     };
   }
   return idx;
@@ -336,20 +338,20 @@ export default function MarketsDashboard({ data, date }) {
         </div>
   <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
   {(() => {
-    const up = mergedIndices.filter(i => i.pct >= 0).length;
-    const down = mergedIndices.filter(i => i.pct < 0).length;
-    const best = [...mergedIndices].sort((a, b) => b.pct - a.pct)[0];
-    const worst = [...mergedIndices].sort((a, b) => a.pct - b.pct)[0];
+  const today = date;
+  const up = mergedIndices.filter(i => i.pct >= 0).length;
+  const down = mergedIndices.filter(i => i.pct < 0).length;
+  const best = [...mergedIndices].sort((a, b) => b.pct - a.pct)[0];
+  const worst = [...mergedIndices].sort((a, b) => a.pct - b.pct)[0];
 
-    // Check which regions are updated
-    const asiaIndices = mergedIndices.filter(i => i.region === 'asia' || i.region === 'india');
-    const usaIndices = mergedIndices.filter(i => i.region === 'usa');
-    const euIndices = mergedIndices.filter(i => i.region === 'europe');
+  const asiaIndices = mergedIndices.filter(i => i.region === 'asia' || i.region === 'india');
+  const usaIndices = mergedIndices.filter(i => i.region === 'usa');
+  const euIndices = mergedIndices.filter(i => i.region === 'europe');
 
-    const asiaUpdated = asiaIndices.some(i => i.fetchedAt);
-    const usaUpdated = usaIndices.some(i => i.fetchedAt);
-    const euUpdated = euIndices.some(i => i.fetchedAt);
-    const allUpdated = asiaUpdated && usaUpdated && euUpdated;
+  const asiaUpdated = asiaIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
+  const usaUpdated = usaIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
+  const euUpdated = euIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
+  const allUpdated = asiaUpdated && usaUpdated && euUpdated;
 
     if (allUpdated) {
       return `Global markets closed mixed on ${date}. ${up} of 12 indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
