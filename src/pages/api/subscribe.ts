@@ -34,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'TheCloseReport <onboarding@resend.dev>',
+        from: 'TheCloseReport <hello@theclosereport.com>',
         to: email,
         subject: '📊 Welcome to TheCloseReport!',
         html: `
