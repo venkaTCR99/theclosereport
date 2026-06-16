@@ -268,7 +268,7 @@ export default function MarketsDashboard({ data, date }) {
   }
   return idx;
 });
-  const filtered = region === "All" ? mergedIndices : mergedIndices.filter(i => i.region === region);
+  const filtered = region === "All" ? mergedIndices : mergedIndices.filter(i => i.region?.toLowerCase() === region.toLowerCase());
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 40px" }}>
