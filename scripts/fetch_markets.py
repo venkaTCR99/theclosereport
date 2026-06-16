@@ -6,7 +6,13 @@ from datetime import datetime, timezone, timedelta
 # IST timezone
 IST = timezone(timedelta(hours=5, minutes=30))
 NOW = datetime.now(IST)
-TODAY = NOW.date().isoformat()
+# If fetching after midnight (US/EU close)
+# use previous day's date
+if NOW.hour < 6:  # before 6AM IST = after midnight
+    from datetime import timedelta
+    TODAY = (NOW.date() - timedelta(days=1)).isoformat()
+else:
+    TODAY = NOW.date().isoformat()
 FETCHED_AT = NOW.isoformat()
 
 # Define indices with market close times
