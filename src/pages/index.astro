@@ -50,7 +50,7 @@ const formatted = new Date(reportDate + 'T00:00:00')
     </div>
   </div>
 
-  <MarketsDashboard client:load data={JSON.stringify(indices)} date={reportDate} />
+  <MarketsDashboard client:load data={JSON.stringify(indices)} date={reportDate} lang="en" />
 </BaseLayout>
 
 <script>
@@ -92,4 +92,18 @@ const formatted = new Date(reportDate + 'T00:00:00')
   // Apply saved language on load
   const savedLang = localStorage.getItem('lang') || 'en';
   applyTranslation(savedLang);
+</script>
+
+<script>  
+  // Sync language to dashboard
+  function syncLangToDashboard(lang) {
+    window.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
+  }
+
+  const savedLang = localStorage.getItem('lang') || 'en';
+  setTimeout(() => syncLangToDashboard(savedLang), 500);
+
+  window.addEventListener('langchange', (e) => {
+    syncLangToDashboard(e.detail);
+  });
 </script>

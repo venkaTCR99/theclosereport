@@ -6,7 +6,11 @@ export default {
   index: "Index",
   close: "Close",
   change: "Change",
-  allMarkets: "All",
+  percent: "%",
+  all: "All",
   executive: "Executive Summary",
+  captured: "Captured",
   footer: "Daily Global Markets Snapshot",
+  dataSource: "Market data sourced from",
+  rights: "All rights reserved",
 }

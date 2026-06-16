@@ -1,6 +1,49 @@
 import { useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 
+const TRANSLATIONS = {
+  en: {
+    snapshot: "Day Snapshot",
+    index: "Index",
+    close: "Close",
+    change: "Change",
+    percent: "%",
+    all: "All",
+    executive: "Executive Summary",
+    captured: "Captured",
+  },
+  hi: {
+    snapshot: "दिन का स्नैपशॉट",
+    index: "सूचकांक",
+    close: "बंद",
+    change: "बदलाव",
+    percent: "%",
+    all: "सभी",
+    executive: "कारकारी सारांश",
+    captured: "डेटा समय",
+  },
+  te: {
+    snapshot: "రోజు స్నాప్‌షాట్",
+    index: "సూచక",
+    close: "ముగింపు",
+    change: "మార",
+    percent: "%",
+    all: "అన్నీ",
+    executive: "కార్యనర్వాహక సారశం",
+    captured: "డేటా సమయం",
+  },
+  ta: {
+    snapshot: "நாள் சருக்கம்",
+    index: "குறியடு",
+    close: "இறுதி",
+    change: "மாற்றம்",
+    percent: "%",
+    all: "அனைத்தும்",
+    executive: "நிர்வாக சருக்கம்",
+    captured: "தரவு நேரம்",
+  },
+};
+
 const INDICES = [
   {
     id: "dow", name: "Dow Jones", country: "🇺🇸 USA", region: "USA",
@@ -253,6 +296,18 @@ const IndexCard = ({ idx, date }) => {
 export default function MarketsDashboard({ data, date }) {
   const realData = data ? JSON.parse(data) : null;
   const [region, setRegion] = useState("All");
+  const [lang, setLang] = useState(
+    typeof window !== 'undefined' ? (localStorage.getItem('lang') || 'en') : 'en'
+  );
+
+  // Listen for language changes
+  if (typeof window !== 'undefined') {
+    window.addEventListener('langchange', (e) => {
+      setLang(e.detail);
+    });
+  }
+
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
   const mergedIndices = INDICES.map(idx => {
   if (realData && realData[idx.id]) {
     const real = realData[idx.id];
@@ -277,13 +332,13 @@ export default function MarketsDashboard({ data, date }) {
       <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden", marginBottom: 24 }}>
         <div style={{ padding: "12px 16px", borderBottom: "1px solid var(--border)" }}>
           <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 700 }}>
-            Day Snapshot — {date || "June 11, 2026"}
+            {t.snapshot} — {date}
           </span>
         </div>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
-              {["Index", "Close", "Change", "%"].map(h => (
+              {[t.index, t.close, t.change, t.percent].map(h => (
                 <th key={h} style={{ padding: "8px 16px", textAlign: h === "Index" ? "left" : "right", fontSize: 10, color: "var(--muted)", fontWeight: 600, textTransform: "uppercase" }}>{h}</th>
               ))}
             </tr>
@@ -320,7 +375,7 @@ export default function MarketsDashboard({ data, date }) {
             color: region === r ? "#fff" : "var(--muted)",
             transition: "all 0.15s",
           }}>
-            {r}
+            {r === "All" ? t.all : r}
           </button>
         ))}
       </div>
@@ -334,7 +389,7 @@ export default function MarketsDashboard({ data, date }) {
         borderRadius: 12, padding: "20px 24px", marginTop: 8,
       }}>
         <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700, marginBottom: 10 }}>
-          ◆ Executive Summary
+            ◆ {t.executive}
         </div>
   <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
   {(() => {
