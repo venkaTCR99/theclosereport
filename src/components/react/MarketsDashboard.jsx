@@ -403,9 +403,9 @@ export default function MarketsDashboard({ data, date }) {
   const usaIndices = mergedIndices.filter(i => i.region === 'usa');
   const euIndices = mergedIndices.filter(i => i.region === 'europe');
 
-  const asiaUpdated = asiaIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
-  const usaUpdated = usaIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
-  const euUpdated = euIndices.some(i => i.fetchedAt && i.fetchedAt.startsWith(today));
+  const asiaUpdated = asiaIndices.some(i => i.fetchedAt);
+  const usaUpdated = usaIndices.some(i => i.fetchedAt);
+  const euUpdated = euIndices.some(i => i.fetchedAt);
   const allUpdated = asiaUpdated && usaUpdated && euUpdated;
 
     if (allUpdated) {
