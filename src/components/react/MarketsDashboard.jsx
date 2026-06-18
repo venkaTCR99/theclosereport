@@ -98,6 +98,23 @@ const INDICES = [
     ],
   },
   {
+  id: "nifty", name: "Nifty 50", country: "🇮🇳 India", region: "India",
+  close: 23500, change: 120, pct: 0.51, prev: 23380,
+  color: "#f59e0b", unit: "",
+  highlights: [
+    "Broad market index — 50 large cap stocks",
+    "Benchmark for Indian equity market",
+    "Tracks NSE listed companies",
+  ],
+  intraday: [
+    {t:"09:15",v:23400},{t:"10:00",v:23450},{t:"10:30",v:23480},
+    {t:"11:00",v:23520},{t:"11:30",v:23500},{t:"12:00",v:23510},
+    {t:"12:30",v:23490},{t:"13:00",v:23520},{t:"13:30",v:23510},
+    {t:"14:00",v:23530},{t:"14:30",v:23500},{t:"15:00",v:23510},
+    {t:"15:30",v:23500},
+    ],
+  },
+  {
     id: "sse", name: "Shanghai SSE", country: "🇨 China", region: "Asia",
     close: 3959, change: -68, pct: -1.70, prev: 4027,
     color: "#ef4444", unit: "",
@@ -339,23 +356,23 @@ export default function MarketsDashboard({ data, date }) {
           <thead>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               {[t.index, t.close, t.change, t.percent].map(h => (
-                <th key={h} style={{ padding: "8px 16px", textAlign: h === "Index" ? "left" : "right", fontSize: 10, color: "var(--muted)", fontWeight: 600, textTransform: "uppercase" }}>{h}</th>
+                <th key={h} style={{ padding: "8px 6px", textAlign: h === "Index" ? "left" : "right", fontSize: 10, color: "var(--muted)", fontWeight: 600, textTransform: "uppercase" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {mergedIndices.map((idx, i) => (
               <tr key={idx.id} style={{ borderBottom: i < INDICES.length - 1 ? "1px solid var(--border)" : "none" }}>
-                <td style={{ padding: "9px 16px", fontSize: 13, color: "var(--text)" }}>
+                <td style={{ padding: "9px 6px", fontSize: 13, color: "var(--text)" }}>
                   {idx.country.split(" ")[0]} {idx.name}
                 </td>
-                <td style={{ padding: "9px 16px", textAlign: "right", fontSize: 13, color: "var(--text)", fontWeight: 600 }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, color: "var(--text)", fontWeight: 600 }}>
                   {idx.close.toLocaleString()}
                 </td>
-                <td style={{ padding: "9px 16px", textAlign: "right", fontSize: 13, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
                   {idx.pct >= 0 ? "+" : ""}{idx.change.toLocaleString()}
                 </td>
-                <td style={{ padding: "9px 16px", textAlign: "right", fontSize: 13, fontWeight: 700, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, fontWeight: 700, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
                   {idx.pct >= 0 ? "+" : ""}{idx.pct.toFixed(2)}%
                 </td>
               </tr>

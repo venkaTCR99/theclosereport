@@ -18,6 +18,7 @@ FETCHED_AT = NOW.isoformat()
 # Define indices with market close times
 ASIA_INDICES = {
     "sensex": {"symbol": "^BSESN",   "region": "india"},
+    "nifty":  {"symbol": "^NSEI",    "region": "india"},
     "sse":    {"symbol": "000001.SS", "region": "asia"},
     "szse":   {"symbol": "399001.SZ", "region": "asia"},
     "nikkei": {"symbol": "^N225",     "region": "asia"},
