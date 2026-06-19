@@ -426,7 +426,7 @@ export default function MarketsDashboard({ data, date }) {
   const allUpdated = asiaUpdated && usaUpdated && euUpdated;
 
     if (allUpdated) {
-      return `Global markets closed mixed on ${date}. ${up} of 12 indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
+      return `Global markets closed mixed on ${date}. ${up} of ${mergedIndices.length} indices finished in positive territory while ${down} declined. Best performer was ${best.name} (${best.pct > 0 ? "+" : ""}${best.pct}%) and the biggest decliner was ${worst.name} (${worst.pct}%).`;
     } else if (asiaUpdated && !usaUpdated && !euUpdated) {
       const asiaUp = asiaIndices.filter(i => i.pct >= 0).length;
       const asiaDown = asiaIndices.filter(i => i.pct < 0).length;
