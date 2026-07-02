@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { promise } from 'astro:schema';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -52,7 +53,8 @@ export const POST: APIRoute = async ({ request }) => {
       });
       console.log('✅ Contact added to audience');
     }
-
+    //Wait 1 second to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
     // Send welcome email
     const emailResponse = await fetch('https://api.resend.com/emails', {
