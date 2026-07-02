@@ -25,6 +25,34 @@ export const POST: APIRoute = async ({ request }) => {
 
     const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
     console.log('API Key:', RESEND_API_KEY ? 'Found' : 'NOT FOUND');
+
+    // Add contact to Resend audience
+    const audienceResponse = await fetch('https://api.resend.com/audiences', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const audienceData = await audienceResponse.json();
+    const audienceId = audienceData?.data?.[0]?.id;
+
+    if (audienceId) {
+      await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            unsubscribed: false,
+        }),
+      });
+      console.log('✅ Contact added to audience');
+    }
+
     
     // Send welcome email
     const emailResponse = await fetch('https://api.resend.com/emails', {
@@ -74,7 +102,8 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    return new Response(JSON.stringify({ error: message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
