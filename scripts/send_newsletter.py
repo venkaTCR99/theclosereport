@@ -50,8 +50,12 @@ def get_subscribers():
         with urllib.request.urlopen(req) as response:
             data = json.loads(response.read())
             return [c['email'] for c in data.get('data', []) if not c.get('unsubscribed')]
+    except urllib.error.HTTPError as e:
+        print(f"❌ HTTP Error: {e.code}")
+        print(f"❌ Response: {e.read().decode()}")
+        return []
     except Exception as e:
-        print(f"❌ Error fetching subscribers: {e}")
+        print(f"❌ Error: {e}")
         return []
 
 # Build email HTML
