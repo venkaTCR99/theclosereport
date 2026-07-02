@@ -37,3 +37,9 @@ jobs:
           git add .
           git diff --staged --quiet || git commit -m "Daily market data $(date +%Y-%m-%d)"
           git push
+
+      - name: Send newsletter
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python scripts/send_newsletter.py
+
