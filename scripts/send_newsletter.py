@@ -27,8 +27,21 @@ def fmt(n):
 # Get subscribers from Resend
 def get_subscribers():
     try:
+        # Get audience ID first
         req = urllib.request.Request(
-            "https://api.resend.com/contacts",
+            "https://api.resend.com/audiences",
+            headers={
+                "Authorization": f"Bearer {RESEND_API_KEY}",
+                "Content-Type": "application/json",
+            }
+        )
+        with urllib.request.urlopen(req) as response:
+            audiences = json.loads(response.read())
+            audience_id = audiences['data'][0]['id']
+
+        # Get contacts from audience
+        req = urllib.request.Request(
+            f"https://api.resend.com/audiences/{audience_id}/contacts",
             headers={
                 "Authorization": f"Bearer {RESEND_API_KEY}",
                 "Content-Type": "application/json",
