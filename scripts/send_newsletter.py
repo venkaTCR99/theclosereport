@@ -27,11 +27,13 @@ def fmt(n):
 # Get subscribers from Resend
 # Get subscribers
 def get_subscribers():
-    # Temporary hardcoded list
-    # Will be replaced with proper database solution
-    return [
-        "futurelivealways@outlook.com",
-    ]
+    subscribers_str = os.environ.get("NEWSLETTER_SUBSCRIBERS", "")
+    if not subscribers_str:
+        print("⚠️ No subscribers found in environment!")
+        return []
+    emails = [email.strip() for email in subscribers_str.split(",")]
+    print(f"👥 Found {len(emails)} subscribers")
+    return emails
 
 # Build email HTML
 def build_email(data, date_str):

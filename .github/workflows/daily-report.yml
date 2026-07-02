@@ -41,5 +41,5 @@ jobs:
       - name: Send newsletter
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_SUBSCRIBERS: ${{ secrets.NEWSLETTER_SUBSCRIBERS }}
         run: python scripts/send_newsletter.py
-
