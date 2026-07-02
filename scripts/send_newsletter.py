@@ -163,6 +163,7 @@ def send_email(to_email, subject, html):
             headers={
                 "Authorization": f"Bearer {RESEND_API_KEY}",
                 "Content-Type": "application/json",
+                "User-Agent": "Mozilla/5.0 (compatible; TheCloseReport/1.0)",
             }
         )
         with urllib.request.urlopen(req) as response:
