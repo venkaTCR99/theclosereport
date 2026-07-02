@@ -25,38 +25,13 @@ def fmt(n):
     return f"{n:,.2f}"
 
 # Get subscribers from Resend
+# Get subscribers
 def get_subscribers():
-    try:
-        # Get audience ID first
-        req = urllib.request.Request(
-            "https://api.resend.com/audiences",
-            headers={
-                "Authorization": f"Bearer {RESEND_API_KEY}",
-                "Content-Type": "application/json",
-            }
-        )
-        with urllib.request.urlopen(req) as response:
-            audiences = json.loads(response.read())
-            audience_id = audiences['data'][0]['id']
-
-        # Get contacts from audience
-        req = urllib.request.Request(
-            f"https://api.resend.com/audiences/{audience_id}/contacts",
-            headers={
-                "Authorization": f"Bearer {RESEND_API_KEY}",
-                "Content-Type": "application/json",
-            }
-        )
-        with urllib.request.urlopen(req) as response:
-            data = json.loads(response.read())
-            return [c['email'] for c in data.get('data', []) if not c.get('unsubscribed')]
-    except urllib.error.HTTPError as e:
-        print(f"❌ HTTP Error: {e.code}")
-        print(f"❌ Response: {e.read().decode()}")
-        return []
-    except Exception as e:
-        print(f"❌ Error: {e}")
-        return []
+    # Temporary hardcoded list
+    # Will be replaced with proper database solution
+    return [
+        "futurelivealways@outlook.com",
+    ]
 
 # Build email HTML
 def build_email(data, date_str):
