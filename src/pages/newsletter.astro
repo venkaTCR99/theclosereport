@@ -64,6 +64,104 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Premium WhatsApp Section -->
+<div style="margin-top: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+  
+  <!-- Header -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="display: inline-block; background: #f59e0b20; border: 1px solid #f59e0b40; border-radius: 20px; padding: 4px 14px; margin-bottom: 12px;">
+      <span style="color: #f59e0b; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;">💎 PREMIUM</span>
+    </div>
+    <h2 style="font-size: 20px; font-weight: 800; color: var(--text); margin: 0 0 8px;">
+      WhatsApp Daily Report
+    </h2>
+    <p style="color: var(--muted); font-size: 13px; margin: 0;">
+      Get markets delivered to your WhatsApp every morning!
+    </p>
+  </div>
+
+  <!-- Features -->
+  <div style="margin-bottom: 20px;">
+    {[
+      "📊 All 13 global indices daily",
+      "🌍 USA, India, Asia & Europe",
+      "⚡ Delivered by 7AM IST",
+      "🚫 No links — pure data",
+      "📱 Direct to your WhatsApp",
+    ].map(item => (
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--muted); font-size: 13px;">
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <!-- Price -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-size: 32px; font-weight: 800; color: var(--text);">
+      ₹49.9
+    </div>
+    <div style="color: var(--muted); font-size: 12px;">
+      per month
+    </div>
+  </div>
+
+  <!-- CTA Button -->
+  <button 
+    id="premium-btn"
+    style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #f59e0b; color: white; font-size: 14px; font-weight: 700; cursor: pointer; margin-bottom: 16px;">
+    Get Premium Access 💎
+  </button>
+
+  <!-- QR Code Section (hidden initially) -->
+  <div id="qr-section" style="display: none; text-align: center;">
+    
+    <div style="border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 16px;">
+      <div style="color: var(--text); font-size: 14px; font-weight: 700; margin-bottom: 4px;">
+        Scan to Pay ₹49.9
+      </div>
+      <div style="color: var(--muted); font-size: 12px; margin-bottom: 16px;">
+        UPI ID: your-upi-id@bank
+      </div>
+    </div>
+
+    <!-- QR Code placeholder -->
+    <div style="display: inline-block; padding: 16px; background: white; border-radius: 12px; margin-bottom: 16px;">
+      <img src="/qr-code.png" alt="Payment QR Code" style="width: 180px; height: 180px;" />
+    </div>
+
+    <div style="background: #f59e0b10; border: 1px solid #f59e0b30; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+      <div style="color: var(--text); font-size: 12px; line-height: 1.6;">
+        After payment, send screenshot to<br/>
+        <strong>theclosereportdaily@gmail.com</strong><br/>
+        with your WhatsApp number.<br/>
+        We'll add you within 24 hours! ✅
+      </div>
+    </div>
+
+    <div style="color: var(--muted); font-size: 11px;">
+      Monthly renewal · No auto-debit · Cancel anytime
+    </div>
+  </div>
+
+  <script>
+  const premiumBtn = document.getElementById('premium-btn');
+  const qrSection = document.getElementById('qr-section');
+
+  premiumBtn.addEventListener('click', () => {
+    if (qrSection.style.display === 'none') {
+      qrSection.style.display = 'block';
+      premiumBtn.textContent = 'Hide Payment Details';
+      premiumBtn.style.background = 'var(--muted)';
+    } else {
+      qrSection.style.display = 'none';
+      premiumBtn.textContent = 'Get Premium Access 💎';
+      premiumBtn.style.background = '#f59e0b';
+    }
+  });
+</script>
+
+</div>
+
   </div>
 </BaseLayout>
 
