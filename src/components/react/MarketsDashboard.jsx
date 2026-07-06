@@ -23,14 +23,14 @@ const TRANSLATIONS = {
     captured: "डेटा समय",
   },
   te: {
-    snapshot: "రోజు స్నాప్‌షాట్",
-    index: "సూచక",
-    close: "ముగింపు",
-    change: "మార",
+    snapshot: "\u0C30\u0C4B\u0C1C\u0C41 \u0C38\u0C4D\u0C28\u0C3E\u0C2A\u0C4D\u0C37\u0C3E\u0C1F\u0C4D",
+    index: "\u0C38\u0C42\u0C1A\u0C40",
+    close: "\u0C2E\u0C41\u0C17\u0C3F\u0C02\u0C2A\u0C41",
+    change: "\u0C2E\u0C3E\u0C30\u0C4D\u0C2A\u0C41",
     percent: "%",
-    all: "అన్నీ",
-    executive: "కార్యనర్వాహక సారశం",
-    captured: "డేటా సమయం",
+    all: "\u0C05\u0C28\u0C4D\u0C28\u0C40",
+    executive: "\u0C38\u0C3E\u0C30\u0C3E\u0C02\u0C36\u0C02",
+    captured: "\u0C38\u0C2E\u0C2F\u0C02",
   },
   ta: {
     snapshot: "நாள் சருக்கம்",
@@ -356,23 +356,23 @@ export default function MarketsDashboard({ data, date }) {
           <thead>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               {[t.index, t.close, t.change, t.percent].map(h => (
-                <th key={h} style={{ padding: "8px 6px", textAlign: h === "Index" ? "left" : "right", fontSize: 10, color: "var(--muted)", fontWeight: 600, textTransform: "uppercase" }}>{h}</th>
+                <th key={h} style={{ padding: "8px 6px", textAlign: h === "Index" ? "left" : "right", fontSize: 10, whiteSpace: "nowrap", fontFamily: "'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans', sans-serif", color: "var(--muted)", fontWeight: 600, textTransform: "uppercase" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {mergedIndices.map((idx, i) => (
               <tr key={idx.id} style={{ borderBottom: i < INDICES.length - 1 ? "1px solid var(--border)" : "none" }}>
-                <td style={{ padding: "9px 6px", fontSize: 13, color: "var(--text)" }}>
+                <td style={{ padding: "9px 6px", fontSize: 13, fontFamily: "'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans', sans-serif", color: "var(--text)" }}>
                   {idx.country.split(" ")[0]} {idx.name}
                 </td>
-                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, color: "var(--text)", fontWeight: 600 }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, fontFamily: "'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans', sans-serif", color: "var(--text)", fontWeight: 600 }}>
                   {idx.close.toLocaleString()}
                 </td>
-                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, fontFamily: "'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans', sans-serif", color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
                   {idx.pct >= 0 ? "+" : ""}{idx.change.toLocaleString()}
                 </td>
-                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, fontWeight: 700, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
+                <td style={{ padding: "9px 6px", textAlign: "right", fontSize: 13, fontFamily: "'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans', sans-serif", fontWeight: 700, color: idx.pct >= 0 ? "#10b981" : "#ef4444" }}>
                   {idx.pct >= 0 ? "+" : ""}{idx.pct.toFixed(2)}%
                 </td>
               </tr>
