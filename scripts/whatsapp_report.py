@@ -1,5 +1,6 @@
 import json
 import os
+import glob
 from datetime import datetime, timezone, timedelta
 
 # IST timezone
@@ -138,5 +139,105 @@ def generate_report():
     
     print("\n\n✅ Report saved to whatsapp_report.txt")
 
+    
+    # Get last 5 trading day files
+def generate_weekly_report():
+    data_dir = "src/data/markets"
+    files = sorted(glob.glob(f"{data_dir}/*.json"), reverse=True)[:5]
+    
+    if len(files) < 2:
+        print("❌ Not enough data for weekly report!")
+        return
+
+    # Get latest and oldest data
+    with open(files[0]) as f:
+        latest = json.load(f)
+    with open(files[-1]) as f:
+        oldest = json.load(f)
+
+    latest_date = latest.get('date', '')
+    oldest_date = oldest.get('date', '')
+
+    # Calculate weekly change per index
+    weekly = {}
+    for key in latest['indices']:
+        if key in oldest['indices']:
+            close_now = latest['indices'][key].get('close', 0)
+            close_then = oldest['indices'][key].get('close', 0)
+            if close_then != 0:
+                weekly_pct = round(((close_now - close_then) / close_then) * 100, 2)
+                weekly[key] = {
+                    'name': INDEX_NAMES.get(key, (key,))[0],
+                    'pct': weekly_pct,
+                    'close': close_now,
+                }
+
+    # Sort gainers and losers
+    sorted_weekly = sorted(weekly.items(), key=lambda x: x[1]['pct'], reverse=True)
+    gainers = sorted_weekly[:3]
+    losers = sorted_weekly[-3:][::-1]
+
+    # Count up and down
+    up = len([v for v in weekly.values() if v['pct'] >= 0])
+    down = len([v for v in weekly.values() if v['pct'] < 0])
+
+    # Build message
+    msg = []
+    msg.append("📊 *WEEKLY CLOSE REPORT*")
+    msg.append("━━━━━━━━━━━━━━━━━━━")
+    msg.append(f"📅 Week: {oldest_date} → {latest_date}")
+    msg.append("")
+    msg.append(f"🌍 *{len(weekly)} indices tracked*")
+    msg.append(f"🟢 {up} gained  |  🔴 {down} declined")
+    msg.append("")
+
+    msg.append("🏆 *TOP PERFORMERS*")
+    msg.append("╔═══════════════════╗")
+    for i, (key, data) in enumerate(gainers, 1):
+        sign = "+" if data['pct'] >= 0 else ""
+        msg.append(f"  {i}. {data['name']:<14} {sign}{data['pct']:.2f}%")
+    msg.append("╚═══════════════════╝")
+    msg.append("")
+
+    msg.append("📉 *BIGGEST DECLINERS*")
+    msg.append("╔═══════════════════╗")
+    for i, (key, data) in enumerate(losers, 1):
+        msg.append(f"  {i}. {data['name']:<14} {data['pct']:.2f}%")
+    msg.append("╚═══════════════════╝")
+    msg.append("")
+
+    msg.append("━━━━━━━━━━━━━━━━━━━")
+    msg.append("📌 *Factual observations:*")
+    
+    # Auto observations
+    best = gainers[0][1]
+    worst = losers[0][1]
+    msg.append(f"◆ {best['name']} led gains at {'+' if best['pct']>=0 else ''}{best['pct']:.2f}%")
+    msg.append(f"◆ {worst['name']} biggest decline at {worst['pct']:.2f}%")
+    msg.append(f"◆ {up} of {len(weekly)} indices closed positive for the week")
+    msg.append("")
+    msg.append("━━━━━━━━━━━━━━━━━━━")
+    msg.append("_For informational purposes only._")
+    msg.append("_Not financial advice._")
+    msg.append("")
+    msg.append("🚀 *More features coming soon!*")
+    msg.append("      *TheCloseReport* 📊")
+
+    report = "\n".join(msg)
+    print(report)
+
+    # Save to file
+    with open("whatsapp_weekly_report.txt", "w", encoding="utf-8") as f:
+        f.write(report)
+
+    print("\n✅ Weekly report saved to whatsapp_weekly_report.txt")
+
 if __name__ == "__main__":
-    generate_report()
+    from datetime import datetime
+    day = datetime.now().weekday()  # 6 = Sunday
+    
+    generate_report()  # Daily always
+    
+    if day == 6:  # Sunday only
+        print("\n📅 Sunday — generating weekly report...")
+        generate_weekly_report()
