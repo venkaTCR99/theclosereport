@@ -21,15 +21,22 @@ INDEX_NAMES = {
     "dax":    ("DAX",         "🇩🇪", "EUROPE"),
     "cac":    ("CAC 40",      "🇫🇷", "EUROPE"),
     "stoxx":  ("Euro Stoxx",  "🇪🇺", "EUROPE"),
+    "asx":     ("ASX 200",      "🇦🇺", "AUSTRALIA"),
+    "bovespa": ("Bovespa",      "🇧🇷", "AMERICAS"),
+    "idx":     ("IDX Composite","🇮🇩", "ASIA"),
+    "hsi": ("Hang Seng", "🇭🇰", "ASIA"),
+    "sti": ("STI",       "🇸🇬", "ASIA"),
 }
 
-REGIONS = ["WALL STREET", "INDIA", "ASIA", "EUROPE"]
+REGIONS = ["WALL STREET", "INDIA", "ASIA", "AUSTRALIA", "AMERICAS", "EUROPE"]
 
 REGION_FLAGS = {
     "WALL STREET": "🇺🇸",
     "INDIA": "🇮🇳",
     "ASIA": "🌏",
     "EUROPE": "🇪🇺",
+    "AUSTRALIA": "🇦🇺",
+    "AMERICAS": "🇧🇷",
 }
 
 def get_latest_data():

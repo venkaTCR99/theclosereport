@@ -23,6 +23,9 @@ ASIA_INDICES = {
     "szse":   {"symbol": "399001.SZ", "region": "asia"},
     "nikkei": {"symbol": "^N225",     "region": "asia"},
     "kospi":  {"symbol": "^KS11",     "region": "asia"},
+    "idx":    {"symbol": "^JKSE", "region": "asia"},
+    "hsi":  {"symbol": "^HSI",  "region": "asia"},
+    "sti":  {"symbol": "^STI",  "region": "asia"},
 }
 
 USEU_INDICES = {
@@ -33,6 +36,8 @@ USEU_INDICES = {
     "dax":    {"symbol": "^GDAXI",    "region": "europe"},
     "cac":    {"symbol": "^FCHI",     "region": "europe"},
     "stoxx":  {"symbol": "^STOXX50E", "region": "europe"},
+    "asx":    {"symbol": "^AXJO", "region": "australia"},
+    "bovespa": {"symbol": "^BVSP", "region": "americas"},
 }
 
 # Determine which indices to fetch based on IST time
