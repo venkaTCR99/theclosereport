@@ -50,12 +50,24 @@ def build_email(data, date_str):
 
     # Index rows
     INDEX_NAMES = {
-        "dow": "🇺🇸 Dow Jones", "sp500": "🇺🇸 S&P 500", "nasdaq": "🇺🇸 Nasdaq",
-        "sensex": "🇮🇳 BSE Sensex", "nifty": "🇮🇳 Nifty 50",
-        "sse": "🇨🇳 Shanghai SSE", "szse": "🇨🇳 Shenzhen",
-        "nikkei": "🇯🇵 Nikkei 225", "kospi": "🇰🇷 KOSPI",
-        "ftse": "🇬🇧 FTSE 100", "dax": "🇩🇪 DAX",
-        "cac": "🇫🇷 CAC 40", "stoxx": "🇪🇺 Euro Stoxx 50",
+        "dow":     "🇺🇸 Dow Jones",
+        "sp500":   "🇺🇸 S&P 500",
+        "nasdaq":  "🇺🇸 Nasdaq",
+        "sensex":  "🇮🇳 BSE Sensex",
+        "nifty":   "🇮🇳 Nifty 50",
+        "sse":     "🇨🇳 Shanghai SSE",
+        "szse":    "🇨🇳 Shenzhen",
+        "nikkei":  "🇯🇵 Nikkei 225",
+        "kospi":   "🇰🇷 KOSPI",
+        "hsi":     "🇭🇰 Hang Seng",      
+        "sti":     "🇸🇬 STI Singapore",  
+        "idx":     "🇮🇩 IDX Composite", 
+        "asx":     "🇦🇺 ASX 200",       
+        "bovespa": "🇧🇷 Bovespa",       
+        "ftse":    "🇬🇧 FTSE 100",
+        "dax":     "🇩🇪 DAX",
+        "cac":     "🇫🇷 CAC 40",
+        "stoxx":   "🇪🇺 Euro Stoxx 50",
     }
 
     rows = ""
