@@ -1,11 +1,35 @@
 export const prerender = false;
 
+// Simple rate limiting
+const rateLimitMap = new Map<string, number>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const lastRequest = rateLimitMap.get(ip) || 0;
+  
+  if (now - lastRequest < 60000) { // 1 minute
+    return true;
+  }
+  
+  rateLimitMap.set(ip, now);
+  return false;
+}
+
 import type { APIRoute } from 'astro';
 import { promise } from 'astro:schema';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const text = await request.text();
+
+    // Rate limit check
+  const ip = request.headers.get('x-forwarded-for') || 'unknown';
+    if (isRateLimited(ip)) {
+      return new Response(JSON.stringify({ error: 'Too many requests. Please try again in a minute.' }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
     
     if (!text) {
       return new Response(JSON.stringify({ error: 'Empty request body' }), {
