@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import urllib.request
 import urllib.parse
 from datetime import date, timedelta
@@ -216,6 +217,7 @@ def main():
             success += 1
         else:
             print(f"  ❌ Failed: {email}")
+        time.sleep(1)  # 1 second between emails
 
     print(f"\n✅ Newsletter sent to {success}/{len(subscribers)} subscribers!")
 
