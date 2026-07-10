@@ -190,6 +190,16 @@ def send_email(to_email, subject, html):
 def main():
     print("📧 Starting newsletter send...")
 
+    # Only send between midnight and 6AM IST
+    from datetime import datetime, timezone, timedelta
+    IST = timezone(timedelta(hours=5, minutes=30))
+    NOW = datetime.now(IST)
+    IST_HOUR = NOW.hour
+    
+    if IST_HOUR >= 6:
+        print(f"⏰ {IST_HOUR}:00 IST — Not newsletter time, skipping!")
+        return
+
     data, date_str = get_latest_data()
     if not data:
         print("❌ No data found!")
