@@ -1,29 +1,29 @@
 📊 *WEEKLY CLOSE REPORT*
 ━━━━━━━━━━━━━━━━━━━
-📅 Week: 2026-07-03 → 2026-07-07
+📅 Week: 2026-07-07 → 2026-07-12
 
-🌍 *13 indices tracked*
-🟢 6 gained  |  🔴 7 declined
+🌍 *9 indices tracked*
+🟢 4 gained  |  🔴 5 declined
 
 🏆 *TOP PERFORMERS*
 ╔═══════════════════╗
-  1. Nasdaq         +1.12%
-  2. Nifty 50       +0.80%
-  3. S&P 500        +0.72%
+  1. Bovespa        +3.40%
+  2. Nasdaq         +1.79%
+  3. S&P 500        +0.95%
 ╚═══════════════════╝
 
 📉 *BIGGEST DECLINERS*
 ╔═══════════════════╗
-  1. KOSPI          -6.87%
-  2. Shenzhen       -2.26%
-  3. Nikkei         -1.28%
+  1. FTSE 100       -1.58%
+  2. DAX            -1.56%
+  3. CAC 40         -1.15%
 ╚═══════════════════╝
 
 ━━━━━━━━━━━━━━━━━━━
 📌 *Factual observations:*
-◆ Nasdaq led gains at +1.12%
-◆ KOSPI biggest decline at -6.87%
-◆ 6 of 13 indices closed positive for the week
+◆ Bovespa led gains at +3.40%
+◆ FTSE 100 biggest decline at -1.58%
+◆ 4 of 9 indices closed positive for the week
 
 ━━━━━━━━━━━━━━━━━━━
 _For informational purposes only._
