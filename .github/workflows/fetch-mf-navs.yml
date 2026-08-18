@@ -1,0 +1,66 @@
+name: Fetch MF NAVs
+
+on:
+  schedule:
+    - cron: "0 16 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  fetch-navs:
+    name: Daily NAV Fetch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch NAVs from AMFI
+        run: python scripts/fetch_mf.py
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "TheCloseReport Bot"
+          git config user.email "bot@theclosereport.com"
+          git add src/data/mutual-funds/
+          git diff --cached --quiet && echo "No new data" && exit 0
+          git commit -m "chore: MF NAV close $(date +'%Y-%m-%d')"
+          git push
+
+  weekly-summary:
+    name: Weekly Summary
+    runs-on: ubuntu-latest
+    needs: fetch-navs
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pull latest
+        run: git pull
+
+      - name: Generate weekly summary
+        run: python scripts/weekly_mf.py
+
+      - name: Commit weekly summary
+        run: |
+          git config user.name "TheCloseReport Bot"
+          git config user.email "bot@theclosereport.com"
+          git add src/data/mutual-funds/weekly/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: MF weekly summary $(date +'%Y-%m-%d')"
+          git push
