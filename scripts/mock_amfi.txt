@@ -1,0 +1,29 @@
+Scheme Code;ISIN Div Payout/ ISIN Growth;ISIN Div Reinvestment;Scheme Name;Net Asset Value;Date
+
+Open Ended Schemes(Equity Scheme - Large Cap Fund)
+
+119598;INF204K01B37;INF204K01B45;SBI Blue Chip Fund-Direct Growth;92.4521;18-Aug-2026
+118834;INF769K01EW8;INF769K01EX6;Mirae Asset Large Cap Fund - Direct Plan - Growth;104.1234;18-Aug-2026
+119533;INF209K01YQ3;INF209K01YR1;Aditya Birla Sun Life Frontline Equity Fund - Growth-Direct Plan;573.8812;18-Aug-2026
+
+Open Ended Schemes(Equity Scheme - Mid Cap Fund)
+
+118989;INF179KB1BR7;INF179KB1BS5;HDFC Mid-Cap Opportunities Fund - Direct Plan - Growth;193.4567;18-Aug-2026
+120173;INF174K01LS2;INF174K01LT0;Kotak Emerging Equity Fund - Direct Plan - Growth;145.6789;18-Aug-2026
+
+Open Ended Schemes(Equity Scheme - Small Cap Fund)
+
+118778;INF204KB1963;INF204KB1971;Nippon India Small Cap Fund - Direct Growth;198.3421;18-Aug-2026
+120505;INF846K01EW2;INF846K01EX0;Axis Small Cap Fund - Direct Growth;118.5634;18-Aug-2026
+
+Open Ended Schemes(Equity Scheme - Flexi Cap Fund)
+
+122639;INF879O01019;INF879O01027;Parag Parikh Flexi Cap Fund - Direct Growth;87.6543;18-Aug-2026
+
+Open Ended Schemes(Other Scheme - Index Funds)
+
+120716;INF789F1ABF2;INF789F1ABG0;UTI Nifty 50 Index Fund - Direct Plan - Growth;178.9123;18-Aug-2026
+
+Open Ended Schemes(Hybrid Scheme - Balanced Advantage Fund)
+
+120586;INF109K01Z62;INF109K01Z70;ICICI Prudential Balanced Advantage Fund - Direct Plan - Growth;73.2345;18-Aug-2026

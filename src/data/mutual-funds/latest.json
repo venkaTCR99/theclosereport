@@ -1,0 +1,130 @@
+{
+  "date": "2026-08-18",
+  "generated_at": "2026-08-18T07:35:08Z",
+  "source": "AMFI India \u00b7 www.amfiindia.com",
+  "note": "NAV data published by AMFI. TheCloseReport publishes data only \u2014 no advice or recommendations.",
+  "free_count": 5,
+  "premium_count": 5,
+  "funds": [
+    {
+      "scheme_code": "119598",
+      "name": "SBI Blue Chip Fund-Direct Growth",
+      "short": "SBI Bluechip",
+      "house": "SBI Mutual Fund",
+      "category": "Large Cap",
+      "tier": "free",
+      "nav": 92.4521,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "118989",
+      "name": "HDFC Mid-Cap Opportunities Fund - Direct Plan - Growth",
+      "short": "HDFC Mid-Cap",
+      "house": "HDFC Mutual Fund",
+      "category": "Mid Cap",
+      "tier": "free",
+      "nav": 193.4567,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "122639",
+      "name": "Parag Parikh Flexi Cap Fund - Direct Growth",
+      "short": "Parag Parikh Flexi",
+      "house": "PPFAS Mutual Fund",
+      "category": "Flexi Cap",
+      "tier": "free",
+      "nav": 87.6543,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "120716",
+      "name": "UTI Nifty 50 Index Fund - Direct Plan - Growth",
+      "short": "UTI Nifty 50",
+      "house": "UTI Mutual Fund",
+      "category": "Index",
+      "tier": "free",
+      "nav": 178.9123,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "118778",
+      "name": "Nippon India Small Cap Fund - Direct Growth",
+      "short": "Nippon Small Cap",
+      "house": "Nippon India MF",
+      "category": "Small Cap",
+      "tier": "free",
+      "nav": 198.3421,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "118834",
+      "name": "Mirae Asset Large Cap Fund - Direct Plan - Growth",
+      "short": "Mirae Large Cap",
+      "house": "Mirae Asset MF",
+      "category": "Large Cap",
+      "tier": "premium",
+      "nav": 104.1234,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "120505",
+      "name": "Axis Small Cap Fund - Direct Growth",
+      "short": "Axis Small Cap",
+      "house": "Axis Mutual Fund",
+      "category": "Small Cap",
+      "tier": "premium",
+      "nav": 118.5634,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "120173",
+      "name": "Kotak Emerging Equity Fund - Direct Plan - Growth",
+      "short": "Kotak Emerging",
+      "house": "Kotak Mahindra MF",
+      "category": "Mid Cap",
+      "tier": "premium",
+      "nav": 145.6789,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "120586",
+      "name": "ICICI Prudential Balanced Advantage Fund - Direct Plan - Growth",
+      "short": "ICICI Bal Advantage",
+      "house": "ICICI Prudential MF",
+      "category": "Hybrid",
+      "tier": "premium",
+      "nav": 73.2345,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    },
+    {
+      "scheme_code": "119533",
+      "name": "Aditya Birla Sun Life Frontline Equity Fund - Growth-Direct Plan",
+      "short": "ABSL Frontline",
+      "house": "Aditya Birla Sun Life",
+      "category": "Large Cap",
+      "tier": "premium",
+      "nav": 573.8812,
+      "prev_nav": null,
+      "change": null,
+      "change_pct": null
+    }
+  ]
+}

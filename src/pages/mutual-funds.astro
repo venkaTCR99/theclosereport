@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MFReport from '../components/react/MFReport.jsx';
+import fs from 'fs';
+import path from 'path';
+
+// Read latest MF NAV data — same pattern as your markets pages
+const dataPath = path.join(process.cwd(), 'src/data/mutual-funds/latest.json');
+
+let data = null;
+if (fs.existsSync(dataPath)) {
+  data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+}
+---
+
+<BaseLayout title="Mutual Funds NAV Close | TheCloseReport">
+  <MFReport data={data} client:load />
+</BaseLayout>
