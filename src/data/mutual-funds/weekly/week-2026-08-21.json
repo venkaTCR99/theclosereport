@@ -1,0 +1,219 @@
+{
+  "week_start": "2026-08-17",
+  "week_end": "2026-08-21",
+  "generated_at": "2026-08-18T08:23:19Z",
+  "source": "AMFI India \u00b7 www.amfiindia.com",
+  "note": "Weekly NAV summary. TheCloseReport publishes data only \u2014 no advice or recommendations.",
+  "trading_days_available": 1,
+  "tier_split": {
+    "free": 5,
+    "premium": 5
+  },
+  "funds": [
+    {
+      "scheme_code": "119598",
+      "name": "SBI Large Cap FUND-DIRECT PLAN -GROWTH",
+      "short": "SBI Bluechip",
+      "house": "SBI Mutual Fund",
+      "category": "Large Cap",
+      "tier": "free",
+      "week_open": 105.1793,
+      "week_close": 105.1793,
+      "week_high": 105.1793,
+      "week_low": 105.1793,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 105.1793
+        }
+      ]
+    },
+    {
+      "scheme_code": "118989",
+      "name": "HDFC Mid Cap Fund - Growth Option - Direct Plan",
+      "short": "HDFC Mid-Cap",
+      "house": "HDFC Mutual Fund",
+      "category": "Mid Cap",
+      "tier": "free",
+      "week_open": 236.914,
+      "week_close": 236.914,
+      "week_high": 236.914,
+      "week_low": 236.914,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 236.914
+        }
+      ]
+    },
+    {
+      "scheme_code": "122639",
+      "name": "Parag Parikh Flexi Cap Fund - Direct Plan - Growth",
+      "short": "Parag Parikh Flexi",
+      "house": "PPFAS Mutual Fund",
+      "category": "Flexi Cap",
+      "tier": "free",
+      "week_open": 91.054,
+      "week_close": 91.054,
+      "week_high": 91.054,
+      "week_low": 91.054,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 91.054
+        }
+      ]
+    },
+    {
+      "scheme_code": "120716",
+      "name": "UTI Nifty 50 Index Fund - Growth Option- Direct",
+      "short": "UTI Nifty 50",
+      "house": "UTI Mutual Fund",
+      "category": "Index",
+      "tier": "free",
+      "week_open": 171.029,
+      "week_close": 171.029,
+      "week_high": 171.029,
+      "week_low": 171.029,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 171.029
+        }
+      ]
+    },
+    {
+      "scheme_code": "118778",
+      "name": "Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option",
+      "short": "Nippon Small Cap",
+      "house": "Nippon India MF",
+      "category": "Small Cap",
+      "tier": "free",
+      "week_open": 209.9512,
+      "week_close": 209.9512,
+      "week_high": 209.9512,
+      "week_low": 209.9512,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 209.9512
+        }
+      ]
+    },
+    {
+      "scheme_code": "118834",
+      "name": "Mirae Asset Large & Midcap Fund - Direct Plan - Growth",
+      "short": "Mirae Large Cap",
+      "house": "Mirae Asset MF",
+      "category": "Large Cap",
+      "tier": "premium",
+      "week_open": 180.647,
+      "week_close": 180.647,
+      "week_high": 180.647,
+      "week_low": 180.647,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 180.647
+        }
+      ]
+    },
+    {
+      "scheme_code": "120505",
+      "name": "Axis Midcap Fund - Direct Plan - Growth",
+      "short": "Axis Small Cap",
+      "house": "Axis Mutual Fund",
+      "category": "Small Cap",
+      "tier": "premium",
+      "week_open": 144.39,
+      "week_close": 144.39,
+      "week_high": 144.39,
+      "week_low": 144.39,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 144.39
+        }
+      ]
+    },
+    {
+      "scheme_code": "120173",
+      "name": "Kotak Emerging",
+      "short": "Kotak Emerging",
+      "house": "Kotak Mahindra MF",
+      "category": "Mid Cap",
+      "tier": "premium",
+      "week_open": null,
+      "week_close": null,
+      "week_high": null,
+      "week_low": null,
+      "week_change": null,
+      "week_change_pct": null,
+      "trading_days": 0,
+      "daily_navs": []
+    },
+    {
+      "scheme_code": "120586",
+      "name": "ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth",
+      "short": "ICICI Bal Advantage",
+      "house": "ICICI Prudential MF",
+      "category": "Hybrid",
+      "tier": "premium",
+      "week_open": 121.03,
+      "week_close": 121.03,
+      "week_high": 121.03,
+      "week_low": 121.03,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 121.03
+        }
+      ]
+    },
+    {
+      "scheme_code": "119533",
+      "name": "Aditya Birla Sun Life Corporate Bond Fund - Growth - Direct Plan",
+      "short": "ABSL Frontline",
+      "house": "Aditya Birla Sun Life",
+      "category": "Large Cap",
+      "tier": "premium",
+      "week_open": 122.1916,
+      "week_close": 122.1916,
+      "week_high": 122.1916,
+      "week_low": 122.1916,
+      "week_change": 0.0,
+      "week_change_pct": 0.0,
+      "trading_days": 1,
+      "daily_navs": [
+        {
+          "date": "2026-08-18",
+          "nav": 122.1916
+        }
+      ]
+    }
+  ]
+}
