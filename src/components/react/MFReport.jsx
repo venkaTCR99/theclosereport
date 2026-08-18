@@ -221,7 +221,7 @@ function PremiumLock() {
             Full Top 10 daily NAVs · Weekly close summary · Complete archive
           </div>
           <a
-            href="/premium"
+            href="/newsletter"
             style={{
               display: "inline-block",
               background: T.gold, color: T.navy,
