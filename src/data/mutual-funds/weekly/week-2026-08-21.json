@@ -1,10 +1,10 @@
 {
   "week_start": "2026-08-17",
   "week_end": "2026-08-21",
-  "generated_at": "2026-08-18T08:23:19Z",
+  "generated_at": "2026-08-20T06:14:08Z",
   "source": "AMFI India \u00b7 www.amfiindia.com",
   "note": "Weekly NAV summary. TheCloseReport publishes data only \u2014 no advice or recommendations.",
-  "trading_days_available": 1,
+  "trading_days_available": 3,
   "tier_split": {
     "free": 5,
     "premium": 5
@@ -18,16 +18,20 @@
       "category": "Large Cap",
       "tier": "free",
       "week_open": 105.1793,
-      "week_close": 105.1793,
+      "week_close": 104.4382,
       "week_high": 105.1793,
-      "week_low": 105.1793,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 104.4382,
+      "week_change": -0.7411,
+      "week_change_pct": -0.7,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 105.1793
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 104.4382
         }
       ]
     },
@@ -39,16 +43,20 @@
       "category": "Mid Cap",
       "tier": "free",
       "week_open": 236.914,
-      "week_close": 236.914,
+      "week_close": 235.526,
       "week_high": 236.914,
-      "week_low": 236.914,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 235.526,
+      "week_change": -1.388,
+      "week_change_pct": -0.59,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 236.914
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 235.526
         }
       ]
     },
@@ -60,16 +68,20 @@
       "category": "Flexi Cap",
       "tier": "free",
       "week_open": 91.054,
-      "week_close": 91.054,
+      "week_close": 90.4028,
       "week_high": 91.054,
-      "week_low": 91.054,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 90.4028,
+      "week_change": -0.6512,
+      "week_change_pct": -0.72,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 91.054
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 90.4028
         }
       ]
     },
@@ -81,16 +93,20 @@
       "category": "Index",
       "tier": "free",
       "week_open": 171.029,
-      "week_close": 171.029,
+      "week_close": 169.5511,
       "week_high": 171.029,
-      "week_low": 171.029,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 169.5511,
+      "week_change": -1.4779,
+      "week_change_pct": -0.86,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 171.029
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 169.5511
         }
       ]
     },
@@ -102,16 +118,20 @@
       "category": "Small Cap",
       "tier": "free",
       "week_open": 209.9512,
-      "week_close": 209.9512,
+      "week_close": 209.067,
       "week_high": 209.9512,
-      "week_low": 209.9512,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 209.067,
+      "week_change": -0.8842,
+      "week_change_pct": -0.42,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 209.9512
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 209.067
         }
       ]
     },
@@ -123,16 +143,20 @@
       "category": "Large Cap",
       "tier": "premium",
       "week_open": 180.647,
-      "week_close": 180.647,
+      "week_close": 179.507,
       "week_high": 180.647,
-      "week_low": 180.647,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 179.507,
+      "week_change": -1.14,
+      "week_change_pct": -0.63,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 180.647
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 179.507
         }
       ]
     },
@@ -144,16 +168,20 @@
       "category": "Small Cap",
       "tier": "premium",
       "week_open": 144.39,
-      "week_close": 144.39,
+      "week_close": 144.19,
       "week_high": 144.39,
-      "week_low": 144.39,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 144.19,
+      "week_change": -0.2,
+      "week_change_pct": -0.14,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 144.39
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 144.19
         }
       ]
     },
@@ -181,16 +209,20 @@
       "category": "Hybrid",
       "tier": "premium",
       "week_open": 121.03,
-      "week_close": 121.03,
+      "week_close": 120.05,
       "week_high": 121.03,
-      "week_low": 121.03,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 120.05,
+      "week_change": -0.98,
+      "week_change_pct": -0.81,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 121.03
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 120.05
         }
       ]
     },
@@ -202,16 +234,20 @@
       "category": "Large Cap",
       "tier": "premium",
       "week_open": 122.1916,
-      "week_close": 122.1916,
+      "week_close": 122.1034,
       "week_high": 122.1916,
-      "week_low": 122.1916,
-      "week_change": 0.0,
-      "week_change_pct": 0.0,
-      "trading_days": 1,
+      "week_low": 122.1034,
+      "week_change": -0.0882,
+      "week_change_pct": -0.07,
+      "trading_days": 2,
       "daily_navs": [
         {
           "date": "2026-08-18",
           "nav": 122.1916
+        },
+        {
+          "date": "2026-08-20",
+          "nav": 122.1034
         }
       ]
     }
