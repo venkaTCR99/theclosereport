@@ -68,7 +68,6 @@ def fetch_amfi() -> str:
 # AMFI line format: SchemeCode;ISIN1;ISIN2;SchemeName;NAV;Date
 
 def parse_amfi(raw: str) -> tuple[dict, dict]:
-    """Returns (nav_map, name_map) keyed by scheme code string."""
     nav_map  = {}
     name_map = {}
     for line in raw.splitlines():
@@ -79,11 +78,17 @@ def parse_amfi(raw: str) -> tuple[dict, dict]:
         if not code.isdigit() or len(code) != 6:
             continue
         name = parts[3].strip()
-        try:
-            nav = float(parts[4].strip())
-        except ValueError:
-            continue
-        if nav > 0:
+        # NAV position varies — scan all parts for valid float > 1
+        nav = None
+        for part in parts[4:]:
+            try:
+                val = float(part.strip())
+                if val > 1:
+                    nav = val
+                    break
+            except ValueError:
+                continue
+        if nav:
             nav_map[code]  = nav
             name_map[code] = name
     return nav_map, name_map

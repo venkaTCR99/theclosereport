@@ -39,7 +39,7 @@ jobs:
           git push
 
       - name: Send newsletter
-        if: github.event.schedule == '30 18 * * 1-5' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule' && github.event.schedule == '30 18 * * 1-5'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NEWSLETTER_SUBSCRIBERS: ${{ secrets.NEWSLETTER_SUBSCRIBERS }}
