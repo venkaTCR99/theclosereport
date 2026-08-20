@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 50" width="460" height="50">
+  
+  <!-- Blue bars -->
+  <rect x="0" y="2" width="5" height="40" rx="2.5" fill="#3B82F6"/>
+  <rect x="9" y="2" width="5" height="40" rx="2.5" fill="#1D4ED8"/>
+  
+  <!-- Wordmark — using currentColor for light/dark compatibility -->
+  <text x="24" y="32" font-size="22" font-weight="700" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-0.02em">
+    <tspan fill="currentColor">TheIncredible</tspan><tspan fill="#3B82F6">Swipe</tspan><tspan fill="currentColor"> Studio</tspan>
+  </text>
+
+</svg>
