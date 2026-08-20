@@ -35,7 +35,7 @@ TOP_10_FUNDS = [
     # ── PREMIUM (ranks 6–10) ─────────────────────────────────
     {"scheme_code": "118834", "short": "Mirae Large Cap",     "house": "Mirae Asset MF",         "category": "Large Cap",  "tier": "premium"},
     {"scheme_code": "120505", "short": "Axis Small Cap",      "house": "Axis Mutual Fund",       "category": "Small Cap",  "tier": "premium"},
-    {"scheme_code": "120173", "short": "Kotak Emerging",      "house": "Kotak Mahindra MF",      "category": "Mid Cap",    "tier": "premium"},
+    {"scheme_code": "127042", "short": "Motilal Midcap", "house": "Motilal Oswal MF", "category": "Mid Cap", "tier": "premium"},
     {"scheme_code": "120586", "short": "ICICI Bal Advantage", "house": "ICICI Prudential MF",    "category": "Hybrid",     "tier": "premium"},
     {"scheme_code": "119533", "short": "ABSL Frontline",      "house": "Aditya Birla Sun Life",  "category": "Large Cap",  "tier": "premium"},
 ]
