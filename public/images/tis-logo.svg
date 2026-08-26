@@ -6,7 +6,7 @@
   
   <!-- Wordmark — using currentColor for light/dark compatibility -->
   <text x="24" y="32" font-size="22" font-weight="700" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-0.02em">
-    <tspan fill="currentColor">TheIncredible</tspan><tspan fill="#3B82F6">Swipe</tspan><tspan fill="currentColor"> Studio</tspan>
+    <tspan fill="currentColor">Incredible</tspan><tspan fill="#3B82F6">Swipe</tspan><tspan fill="currentColor"> Studio</tspan>
   </text>
 
 </svg>
