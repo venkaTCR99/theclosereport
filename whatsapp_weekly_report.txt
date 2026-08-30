@@ -1,29 +1,29 @@
 📊 *WEEKLY CLOSE REPORT*
 ━━━━━━━━━━━━━━━━━━━
-📅 Week: 2026-08-18 → 2026-08-23
+📅 Week: 2026-08-26 → 2026-08-30
 
 🌍 *9 indices tracked*
-🟢 3 gained  |  🔴 6 declined
+🟢 6 gained  |  🔴 3 declined
 
 🏆 *TOP PERFORMERS*
 ╔═══════════════════╗
-  1. Bovespa        +2.44%
-  2. FTSE 100       +0.83%
-  3. DAX            +0.03%
+  1. DAX            +1.08%
+  2. Nasdaq         +1.04%
+  3. Bovespa        +0.62%
 ╚═══════════════════╝
 
 📉 *BIGGEST DECLINERS*
 ╔═══════════════════╗
-  1. Nasdaq         -0.42%
-  2. CAC 40         -0.29%
-  3. S&P 500        -0.29%
+  1. CAC 40         -0.72%
+  2. FTSE 100       -0.50%
+  3. ASX 200        -0.39%
 ╚═══════════════════╝
 
 ━━━━━━━━━━━━━━━━━━━
 📌 *Factual observations:*
-◆ Bovespa led gains at +2.44%
-◆ Nasdaq biggest decline at -0.42%
-◆ 3 of 9 indices closed positive for the week
+◆ DAX led gains at +1.08%
+◆ CAC 40 biggest decline at -0.72%
+◆ 6 of 9 indices closed positive for the week
 
 ━━━━━━━━━━━━━━━━━━━
 _For informational purposes only._
