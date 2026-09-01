@@ -10,7 +10,7 @@ RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
 FROM_EMAIL = "TheCloseReport <hello@theclosereport.com>"
 SITE_URL = "https://theclosereport.com"
 
-# Get latest data file
+# Get latest markets data file
 def get_latest_data():
     data_dir = "src/data/markets"
     files = sorted([f for f in os.listdir(data_dir) if f.endswith('.json')], reverse=True)
@@ -21,11 +21,19 @@ def get_latest_data():
     with open(f"{data_dir}/{latest}") as f:
         return json.load(f), date_str
 
+# ── NEW: Get latest MF NAV data ───────────────────────────────────────────────
+def get_mf_data():
+    mf_path = "src/data/mutual-funds/latest.json"
+    if not os.path.exists(mf_path):
+        print("⚠️ MF data not found, skipping MF section.")
+        return None
+    with open(mf_path) as f:
+        return json.load(f)
+
 # Format number
 def fmt(n):
     return f"{n:,.2f}"
 
-# Get subscribers from Resend
 # Get subscribers
 def get_subscribers():
     subscribers_str = os.environ.get("NEWSLETTER_SUBSCRIBERS", "")
@@ -36,8 +44,83 @@ def get_subscribers():
     print(f"👥 Found {len(emails)} subscribers")
     return emails
 
-# Build email HTML
-def build_email(data, date_str):
+# ── NEW: Build MF section HTML ────────────────────────────────────────────────
+def build_mf_section(mf_data):
+    if not mf_data:
+        return ""
+
+    free_funds = [f for f in mf_data.get("funds", []) if f.get("tier") == "free"]
+    if not free_funds:
+        return ""
+
+    rows = ""
+    for i, fund in enumerate(free_funds):
+        nav        = fund.get("nav")
+        change_pct = fund.get("change_pct")
+        nav_str    = f"₹{nav:.4f}" if nav else "—"
+        if change_pct is not None:
+            color  = "#10b981" if change_pct >= 0 else "#ef4444"
+            arrow  = "▲" if change_pct >= 0 else "▼"
+            sign   = "+" if change_pct >= 0 else ""
+            pct_str = f"{arrow} {sign}{change_pct:.2f}%"
+        else:
+            color   = "#64748b"
+            pct_str = "—"
+
+        rows += f"""
+        <tr style="border-bottom: 1px solid #1e293b;">
+            <td style="padding: 10px 16px; color: #64748b; font-size: 12px; font-weight: 700;">{i+1}</td>
+            <td style="padding: 10px 16px; color: #f1f5f9; font-size: 13px; font-weight: 600;">{fund.get('short', '—')}</td>
+            <td style="padding: 10px 16px; color: #64748b; font-size: 11px;">{fund.get('category', '—')}</td>
+            <td style="padding: 10px 16px; color: #f1f5f9; font-size: 13px; text-align: right; font-weight: 700;">{nav_str}</td>
+            <td style="padding: 10px 16px; color: {color}; font-size: 13px; text-align: right; font-weight: 700;">{pct_str}</td>
+        </tr>"""
+
+    return f"""
+    <!-- MF NAV Section -->
+    <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
+
+      <!-- MF Header -->
+      <div style="padding: 12px 16px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span style="color: #f1f5f9; font-size: 14px; font-weight: 700;">🇮🇳 Mutual Funds — NAV Close</span>
+          <span style="color: #64748b; font-size: 11px; margin-left: 8px;">Top 5 · Free</span>
+        </div>
+        <span style="color: #64748b; font-size: 11px;">Source: AMFI India</span>
+      </div>
+
+      <!-- MF Table -->
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 1px solid #1e293b;">
+            <th style="padding: 8px 16px; color: #64748b; font-size: 10px; text-align: left;">#</th>
+            <th style="padding: 8px 16px; color: #64748b; font-size: 10px; text-align: left; text-transform: uppercase;">Fund</th>
+            <th style="padding: 8px 16px; color: #64748b; font-size: 10px; text-align: left; text-transform: uppercase;">Category</th>
+            <th style="padding: 8px 16px; color: #64748b; font-size: 10px; text-align: right; text-transform: uppercase;">NAV</th>
+            <th style="padding: 8px 16px; color: #64748b; font-size: 10px; text-align: right; text-transform: uppercase;">Change</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+
+      <!-- MF Footer note -->
+      <div style="padding: 10px 16px; border-top: 1px solid #1e293b;">
+        <span style="color: #334155; font-size: 10px;">NAV data published by AMFI India · TheCloseReport publishes data only — not investment advice.</span>
+      </div>
+
+    </div>
+
+    <!-- Premium CTA -->
+    <div style="background: #0f172a; border: 1px solid #c9a84c; border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; text-align: center;">
+      <p style="color: #f0d080; font-size: 13px; font-weight: 700; margin: 0 0 6px;">🔒 Funds 6–10 available on Premium</p>
+      <p style="color: #64748b; font-size: 11px; margin: 0 0 12px;">Full Top 10 NAVs · Weekly summary · Complete archive</p>
+      <a href="{SITE_URL}/newsletter" style="display: inline-block; padding: 8px 24px; background: #c9a84c; color: #0d1b2a; text-decoration: none; border-radius: 6px; font-weight: 800; font-size: 12px;">
+        Unlock Premium →
+      </a>
+    </div>"""
+
+# Build email HTML — existing function, MF section added only
+def build_email(data, date_str, mf_data=None):
     indices = data.get('indices', {})
     
     # Calculate stats
@@ -92,6 +175,9 @@ def build_email(data, date_str):
     best_text = f"{list(INDEX_NAMES.values())[list(INDEX_NAMES.keys()).index(next((k for k, v in indices.items() if v == best), 'dow'))]} +{best.get('pct', 0):.2f}%" if best else "N/A"
     worst_text = f"{list(INDEX_NAMES.values())[list(INDEX_NAMES.keys()).index(next((k for k, v in indices.items() if v == worst), 'dow'))]} {worst.get('pct', 0):.2f}%" if worst else "N/A"
 
+    # Build MF section
+    mf_section = build_mf_section(mf_data)
+
     html = f"""
 <!DOCTYPE html>
 <html>
@@ -129,7 +215,7 @@ def build_email(data, date_str):
       </div>
     </div>
 
-    <!-- Table -->
+    <!-- Markets Table -->
     <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
       <table style="width: 100%; border-collapse: collapse;">
         <thead>
@@ -144,6 +230,8 @@ def build_email(data, date_str):
       </table>
     </div>
 
+    {mf_section}
+
     <!-- CTA -->
     <div style="text-align: center; margin-bottom: 24px;">
       <a href="{SITE_URL}" style="display: inline-block; padding: 12px 32px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 14px;">
@@ -154,7 +242,10 @@ def build_email(data, date_str):
     <!-- Footer -->
     <div style="text-align: center; color: #475569; font-size: 11px; padding-top: 16px; border-top: 1px solid #1e293b;">
       <p style="margin: 0 0 4px;">© 2026 TheCloseReport.com · Daily Global Markets Snapshot</p>
-      <p style="margin: 0;">Market data sourced from Yahoo Finance</p>
+      <p style="margin: 0;">Market data sourced from Yahoo Finance · MF data sourced from AMFI India</p>
+      <p style="margin: 8px 0 0; color: #334155; font-size: 10px;">
+          A <strong style="color: #475569;">Incredible<span style="color: #3b82f6;">Swipe</span> Studio</strong> Product
+      </p>
     </div>
 
   </div>
@@ -202,21 +293,26 @@ def main():
 
     data, date_str = get_latest_data()
     if not data:
-        print("❌ No data found!")
+        print("❌ No market data found!")
         return
 
-    print(f"📊 Using data for {date_str}")
+    print(f"📊 Using market data for {date_str}")
+
+    # ── NEW: Load MF data ─────────────────────────────────────────────────────
+    mf_data = get_mf_data()
+    if mf_data:
+        print(f"🇮🇳 MF data loaded for {mf_data.get('date', '—')}")
+    else:
+        print("⚠️ MF data not available — sending markets only")
 
     # Get subscribers
     subscribers = get_subscribers()
-    print(f"👥 Found {len(subscribers)} subscribers")
-
     if not subscribers:
         print("⚠️ No subscribers found!")
         return
 
-    # Build email
-    html = build_email(data, date_str)
+    # Build email — pass mf_data
+    html = build_email(data, date_str, mf_data)
     subject = f"📊 TheCloseReport — {date_str} Market Close"
 
     # Send to all subscribers
@@ -227,7 +323,7 @@ def main():
             success += 1
         else:
             print(f"  ❌ Failed: {email}")
-        time.sleep(1)  # 1 second between emails
+        time.sleep(1)
 
     print(f"\n✅ Newsletter sent to {success}/{len(subscribers)} subscribers!")
 
