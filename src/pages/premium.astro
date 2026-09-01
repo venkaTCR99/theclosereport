@@ -1,0 +1,312 @@
+---
+// src/pages/premium.astro
+// TheCloseReport.com — Premium Subscription Page
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// i18n
+const lang = Astro.url.searchParams.get('lang') || 'en';
+
+const i18n = {
+  en: {
+    hero_label:        "Premium",
+    hero_title:        "The Full Close Report",
+    hero_sub:          "Every market. Every fund. Every day. Beautifully.",
+    free_label:        "Free",
+    free_desc:         "You're already on this",
+    monthly_label:     "Premium Monthly",
+    lifetime_label:    "Premium Lifetime",
+    bundle_label:      "Bundle",
+    bundle_sub:        "WhatsApp + Premium",
+    per_month:         "/ month",
+    one_time:          "one-time",
+    best_value:        "Best Value",
+    popular:           "Most Popular",
+    cta_monthly:       "Subscribe Monthly →",
+    cta_lifetime:      "Get Lifetime Access →",
+    cta_bundle:        "Get Bundle →",
+    cta_free:          "You're on Free",
+    what_you_get:      "What You Get",
+    faq_title:         "Frequently Asked Questions",
+    note:              "TheCloseReport publishes data only. Not investment advice.",
+    // Features
+    f_markets:         "Global Markets — Daily Close",
+    f_mf_top5:         "Top 5 MF NAVs — Daily",
+    f_mf_top10:        "All 10 MF NAVs — Daily",
+    f_weekly:          "Weekly MF Summary — Fridays",
+    f_archive:         "Full Historical Archive",
+    f_whatsapp:        "WhatsApp Daily Report",
+    f_email:           "Daily Email Newsletter",
+    // FAQ
+    faq_1_q:           "When does data update?",
+    faq_1_a:           "Market data updates nightly. MF NAVs update after AMFI publishes — usually by 9:30 PM IST on weekdays.",
+    faq_2_q:           "How do I get premium access after payment?",
+    faq_2_a:           "After payment, email us at hello@theclosereport.com with your payment confirmation. We'll add you within 24 hours.",
+    faq_3_q:           "Can I cancel my monthly subscription?",
+    faq_3_a:           "Yes, anytime. Just email us and we'll cancel immediately. No questions asked.",
+    faq_4_q:           "Is this investment advice?",
+    faq_4_a:           "No. TheCloseReport publishes closing price data only. We do not provide investment advice or recommendations.",
+  },
+  hi: {
+    hero_label:        "प्रीमियम",
+    hero_title:        "पूर्ण क्लोज रिपोर्ट",
+    hero_sub:          "हर बाजार। हर फंड। हर दिन। सुंदर तरीके से।",
+    free_label:        "फ्री",
+    free_desc:         "आप पहले से इस पर हैं",
+    monthly_label:     "प्रीमियम मासिक",
+    lifetime_label:    "प्रीमियम लाइफटाइम",
+    bundle_label:      "बंडल",
+    bundle_sub:        "व्हाट्सएप + प्रीमियम",
+    per_month:         "/ माह",
+    one_time:          "एक बार",
+    best_value:        "सर्वश्रेष्ठ मूल्य",
+    popular:           "सबसे लोकप्रिय",
+    cta_monthly:       "मासिक सदस्यता →",
+    cta_lifetime:      "लाइफटाइम एक्सेस →",
+    cta_bundle:        "बंडल लें →",
+    cta_free:          "आप फ्री पर हैं",
+    what_you_get:      "आपको क्या मिलता है",
+    faq_title:         "अक्सर पूछे जाने वाले प्रश्न",
+    note:              "TheCloseReport केवल डेटा प्रकाशित करता है। निवेश सलाह नहीं।",
+    f_markets:         "वैश्विक बाजार — दैनिक क्लोज",
+    f_mf_top5:         "शीर्ष 5 MF NAV — दैनिक",
+    f_mf_top10:        "सभी 10 MF NAV — दैनिक",
+    f_weekly:          "साप्ताहिक MF सारांश — शुक्रवार",
+    f_archive:         "पूर्ण ऐतिहासिक संग्रह",
+    f_whatsapp:        "व्हाट्सएप दैनिक रिपोर्ट",
+    f_email:           "दैनिक ईमेल न्यूज़लेटर",
+    faq_1_q:           "डेटा कब अपडेट होता है?",
+    faq_1_a:           "बाजार डेटा रात को अपडेट होता है। MF NAV AMFI प्रकाशन के बाद — आमतौर पर सप्ताह के दिनों में रात 9:30 बजे IST तक।",
+    faq_2_q:           "भुगतान के बाद प्रीमियम एक्सेस कैसे मिलेगी?",
+    faq_2_a:           "भुगतान के बाद, hello@theclosereport.com पर ईमेल करें। हम 24 घंटे में जोड़ देंगे।",
+    faq_3_q:           "क्या मैं मासिक सदस्यता रद्द कर सकता हूं?",
+    faq_3_a:           "हां, कभी भी। बस हमें ईमेल करें और हम तुरंत रद्द कर देंगे।",
+    faq_4_q:           "क्या यह निवेश सलाह है?",
+    faq_4_a:           "नहीं। TheCloseReport केवल क्लोजिंग प्राइस डेटा प्रकाशित करता है।",
+  },
+  te: {
+    hero_label:        "ప్రీమియం",
+    hero_title:        "పూర్తి క్లోజ్ రిపోర్ట్",
+    hero_sub:          "ప్రతి మార్కెట్. ప్రతి ఫండ్. ప్రతి రోజు. అందంగా.",
+    free_label:        "ఉచితం",
+    free_desc:         "మీరు ఇప్పటికే దీనిలో ఉన్నారు",
+    monthly_label:     "ప్రీమియం నెలవారీ",
+    lifetime_label:    "ప్రీమియం లైఫ్‌టైమ్",
+    bundle_label:      "బండిల్",
+    bundle_sub:        "వాట్సాప్ + ప్రీమియం",
+    per_month:         "/ నెల",
+    one_time:          "ఒకసారి",
+    best_value:        "అత్యుత్తమ విలువ",
+    popular:           "అత్యంత ప్రాచుర్యం",
+    cta_monthly:       "నెలవారీ సభ్యత్వం →",
+    cta_lifetime:      "లైఫ్‌టైమ్ యాక్సెస్ →",
+    cta_bundle:        "బండిల్ తీసుకోండి →",
+    cta_free:          "మీరు ఉచితంలో ఉన్నారు",
+    what_you_get:      "మీకు ఏమి లభిస్తుంది",
+    faq_title:         "తరచుగా అడిగే ప్రశ్నలు",
+    note:              "TheCloseReport డేటా మాత్రమే ప్రచురిస్తుంది. పెట్టుబడి సలహా కాదు.",
+    f_markets:         "గ్లోబల్ మార్కెట్లు — డైలీ క్లోజ్",
+    f_mf_top5:         "టాప్ 5 MF NAV — డైలీ",
+    f_mf_top10:        "అన్ని 10 MF NAV — డైలీ",
+    f_weekly:          "వారపు MF సారాంశం — శుక్రవారాలు",
+    f_archive:         "పూర్తి చారిత్రక ఆర్కైవ్",
+    f_whatsapp:        "వాట్సాప్ డైలీ రిపోర్ట్",
+    f_email:           "డైలీ ఇమెయిల్ న్యూస్‌లెటర్",
+    faq_1_q:           "డేటా ఎప్పుడు అప్‌డేట్ అవుతుంది?",
+    faq_1_a:           "మార్కెట్ డేటా రాత్రి అప్‌డేట్ అవుతుంది. MF NAV AMFI ప్రచురణ తర్వాత — సాధారణంగా వారపు రోజులలో రాత్రి 9:30 IST కి.",
+    faq_2_q:           "చెల్లింపు తర్వాత ప్రీమియం యాక్సెస్ ఎలా పొందాలి?",
+    faq_2_a:           "చెల్లింపు తర్వాత, hello@theclosereport.com కి ఇమెయిల్ చేయండి. మేము 24 గంటల్లో జోడిస్తాము.",
+    faq_3_q:           "నెలవారీ సభ్యత్వాన్ని రద్దు చేయవచ్చా?",
+    faq_3_a:           "అవును, ఎప్పుడైనా. మాకు ఇమెయిల్ చేయండి, మేము వెంటనే రద్దు చేస్తాము.",
+    faq_4_q:           "ఇది పెట్టుబడి సలహానా?",
+    faq_4_a:           "కాదు. TheCloseReport క్లోజింగ్ ప్రైస్ డేటా మాత్రమే ప్రచురిస్తుంది.",
+  },
+  ta: {
+    hero_label:        "பிரீமியம்",
+    hero_title:        "முழு க்ளோஸ் ரிப்போர்ட்",
+    hero_sub:          "ஒவ்வொரு சந்தை. ஒவ்வொரு நிதி. ஒவ்வொரு நாள். அழகாக.",
+    free_label:        "இலவசம்",
+    free_desc:         "நீங்கள் ஏற்கனவே இதில் இருக்கிறீர்கள்",
+    monthly_label:     "பிரீமியம் மாதாந்திர",
+    lifetime_label:    "பிரீமியம் லைஃப்டைம்",
+    bundle_label:      "பண்டில்",
+    bundle_sub:        "வாட்ஸ்அப் + பிரீமியம்",
+    per_month:         "/ மாதம்",
+    one_time:          "ஒருமுறை",
+    best_value:        "சிறந்த மதிப்பு",
+    popular:           "மிகவும் பிரபலமானது",
+    cta_monthly:       "மாதாந்திர சந்தா →",
+    cta_lifetime:      "லைஃப்டைம் அணுகல் →",
+    cta_bundle:        "பண்டில் பெறுக →",
+    cta_free:          "நீங்கள் இலவசத்தில் இருக்கிறீர்கள்",
+    what_you_get:      "நீங்கள் என்ன பெறுவீர்கள்",
+    faq_title:         "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+    note:              "TheCloseReport தரவை மட்டுமே வெளியிடுகிறது. முதலீட்டு ஆலோசனை இல்லை.",
+    f_markets:         "உலக சந்தைகள் — தினசரி க்ளோஸ்",
+    f_mf_top5:         "டாப் 5 MF NAV — தினசரி",
+    f_mf_top10:        "அனைத்து 10 MF NAV — தினசரி",
+    f_weekly:          "வாராந்திர MF சுருக்கம் — வெள்ளிக்கிழமைகள்",
+    f_archive:         "முழு வரலாற்று காப்பகம்",
+    f_whatsapp:        "வாட்ஸ்அப் தினசரி அறிக்கை",
+    f_email:           "தினசரி மின்னஞ்சல் செய்திமடல்",
+    faq_1_q:           "தரவு எப்போது புதுப்பிக்கப்படும்?",
+    faq_1_a:           "சந்தை தரவு இரவில் புதுப்பிக்கப்படும். MF NAV AMFI வெளியீட்டிற்கு பிறகு — பொதுவாக வார நாட்களில் இரவு 9:30 IST க்குள்.",
+    faq_2_q:           "பணம் செலுத்திய பிறகு பிரீமியம் அணுகல் எவ்வாறு பெறுவது?",
+    faq_2_a:           "பணம் செலுத்திய பிறகு, hello@theclosereport.com க்கு மின்னஞ்சல் அனுப்பவும். 24 மணி நேரத்தில் சேர்ப்போம்.",
+    faq_3_q:           "மாதாந்திர சந்தாவை ரத்து செய்யலாமா?",
+    faq_3_a:           "ஆம், எப்போது வேண்டுமானாலும். எங்களுக்கு மின்னஞ்சல் அனுப்பவும், உடனே ரத்து செய்வோம்.",
+    faq_4_q:           "இது முதலீட்டு ஆலோசனையா?",
+    faq_4_a:           "இல்லை. TheCloseReport க்ளோசிங் விலை தரவை மட்டுமே வெளியிடுகிறது.",
+  },
+};
+
+const t = i18n[lang] || i18n.en;
+
+// Razorpay payment links — update after Razorpay activates
+const LINKS = {
+  monthly:  "#",   // ← replace with Razorpay ₹99/month link
+  lifetime: "#",   // ← replace with Razorpay ₹999 link
+  bundle:   "#",   // ← replace with Razorpay ₹129/month link
+};
+---
+
+<BaseLayout title={`${t.hero_label} | TheCloseReport`}>
+  <div style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+
+    <!-- Hero -->
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px;">
+        {t.hero_label}
+      </div>
+      <h1 style="font-size: 36px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; margin: 0 0 12px;">
+        {t.hero_title}
+      </h1>
+      <p style="color: var(--muted); font-size: 16px; margin: 0;">
+        {t.hero_sub}
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px;">
+
+      <!-- Free -->
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center;">
+        <div style="color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+          {t.free_label}
+        </div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 4px;">₹0</div>
+        <div style="color: var(--muted); font-size: 12px; margin-bottom: 20px;">{t.free_desc}</div>
+        <div style="padding: 10px; background: var(--border); border-radius: 8px; color: var(--muted); font-size: 13px; font-weight: 700;">
+          {t.cta_free}
+        </div>
+      </div>
+
+      <!-- Monthly -->
+      <div style="background: var(--surface); border: 2px solid var(--accent); border-radius: 14px; padding: 24px; text-align: center; position: relative;">
+        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #0d1b2a; font-size: 10px; font-weight: 800; padding: 3px 12px; border-radius: 20px; white-space: nowrap;">
+          {t.popular}
+        </div>
+        <div style="color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+          {t.monthly_label}
+        </div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 4px;">₹99</div>
+        <div style="color: var(--muted); font-size: 12px; margin-bottom: 20px;">{t.per_month}</div>
+        <a href={LINKS.monthly} style="display: block; padding: 10px; background: var(--accent); color: #0d1b2a; border-radius: 8px; font-size: 13px; font-weight: 800; text-decoration: none;">
+          {t.cta_monthly}
+        </a>
+      </div>
+
+      <!-- Lifetime -->
+      <div style="background: var(--surface); border: 2px solid #a78bfa; border-radius: 14px; padding: 24px; text-align: center; position: relative;">
+        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #a78bfa; color: #0d1b2a; font-size: 10px; font-weight: 800; padding: 3px 12px; border-radius: 20px; white-space: nowrap;">
+          {t.best_value}
+        </div>
+        <div style="color: #a78bfa; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+          {t.lifetime_label}
+        </div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 4px;">₹999</div>
+        <div style="color: var(--muted); font-size: 12px; margin-bottom: 20px;">{t.one_time}</div>
+        <a href={LINKS.lifetime} style="display: block; padding: 10px; background: #a78bfa; color: #0d1b2a; border-radius: 8px; font-size: 13px; font-weight: 800; text-decoration: none;">
+          {t.cta_lifetime}
+        </a>
+      </div>
+
+      <!-- Bundle -->
+      <div style="background: var(--surface); border: 1px solid #22c55e; border-radius: 14px; padding: 24px; text-align: center;">
+        <div style="color: #22c55e; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">
+          {t.bundle_label}
+        </div>
+        <div style="color: var(--muted); font-size: 10px; margin-bottom: 8px;">{t.bundle_sub}</div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 4px;">₹129</div>
+        <div style="color: var(--muted); font-size: 12px; margin-bottom: 20px;">{t.per_month}</div>
+        <a href={LINKS.bundle} style="display: block; padding: 10px; background: #22c55e; color: #0d1b2a; border-radius: 8px; font-size: 13px; font-weight: 800; text-decoration: none;">
+          {t.cta_bundle}
+        </a>
+      </div>
+
+    </div>
+
+    <!-- What You Get -->
+    <div style="margin-bottom: 48px;">
+      <h2 style="font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 24px; text-align: center;">
+        {t.what_you_get}
+      </h2>
+
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="padding: 12px 20px; text-align: left; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">Feature</th>
+              <th style="padding: 12px 16px; text-align: center; color: var(--muted); font-size: 11px; text-transform: uppercase;">{t.free_label}</th>
+              <th style="padding: 12px 16px; text-align: center; color: var(--accent); font-size: 11px; text-transform: uppercase;">Premium</th>
+              <th style="padding: 12px 16px; text-align: center; color: #22c55e; font-size: 11px; text-transform: uppercase;">{t.bundle_label}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: t.f_markets,  free: true,  premium: true,  bundle: true  },
+              { label: t.f_email,    free: true,  premium: true,  bundle: true  },
+              { label: t.f_mf_top5,  free: true,  premium: true,  bundle: true  },
+              { label: t.f_mf_top10, free: false, premium: true,  bundle: true  },
+              { label: t.f_weekly,   free: false, premium: true,  bundle: true  },
+              { label: t.f_archive,  free: false, premium: true,  bundle: true  },
+              { label: t.f_whatsapp, free: false, premium: false, bundle: true  },
+            ].map((row, i) => (
+              <tr style={`border-bottom: 1px solid var(--border); background: ${i % 2 === 0 ? 'transparent' : 'var(--surface)'}`}>
+                <td style="padding: 14px 20px; color: var(--text); font-size: 13px;">{row.label}</td>
+                <td style="padding: 14px 16px; text-align: center; font-size: 16px;">{row.free ? '✅' : '❌'}</td>
+                <td style="padding: 14px 16px; text-align: center; font-size: 16px;">{row.premium ? '✅' : '❌'}</td>
+                <td style="padding: 14px 16px; text-align: center; font-size: 16px;">{row.bundle ? '✅' : '❌'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="margin-bottom: 48px;">
+      <h2 style="font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 24px; text-align: center;">
+        {t.faq_title}
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        {[
+          { q: t.faq_1_q, a: t.faq_1_a },
+          { q: t.faq_2_q, a: t.faq_2_a },
+          { q: t.faq_3_q, a: t.faq_3_a },
+          { q: t.faq_4_q, a: t.faq_4_a },
+        ].map(faq => (
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px;">
+            <div style="color: var(--text); font-size: 14px; font-weight: 700; margin-bottom: 8px;">{faq.q}</div>
+            <div style="color: var(--muted); font-size: 13px; line-height: 1.6;">{faq.a}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div style="text-align: center; color: var(--muted); font-size: 11px; padding-top: 24px; border-top: 1px solid var(--border);">
+      {t.note}
+    </div>
+
+  </div>
+</BaseLayout>

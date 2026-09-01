@@ -214,7 +214,7 @@ function PremiumLock() {
           <div style={{ color: T.gray, fontSize: 12, lineHeight: 1.6, marginBottom: 18 }}>
             Full Top 10 daily NAVs · Weekly close summary · Complete archive
           </div>
-          <a href="/newsletter" style={{
+          <a href="/premium" style={{
             display: "inline-block",
             background: T.gold, color: T.navy,
             fontWeight: 800, fontSize: 13,
