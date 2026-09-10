@@ -1,0 +1,42 @@
+# .github/workflows/fetch-scanner.yml
+# TheCloseReport — Nifty 50 Scanner
+# Runs Mon–Fri at 4:30 PM IST (11:00 UTC) — after NSE close at 3:30 PM
+# Premium only feature — site display only
+
+name: Fetch Nifty 50 Scanner
+
+on:
+  schedule:
+    - cron: "0 11 * * 1-5"   # 4:30 PM IST = 11:00 UTC Mon–Fri
+  workflow_dispatch:           # manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-scanner:
+    name: Nifty 50 Scanner Fetch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch Nifty 50 scanner data
+        run: python scripts/fetch_scanner.py
+
+      - name: Commit and push scanner data
+        run: |
+          git config user.name "TheCloseReport Bot"
+          git config user.email "bot@theclosereport.com"
+          git add src/data/scanner/
+          git diff --cached --quiet && echo "No new data" && exit 0
+          git commit -m "chore: Nifty 50 scanner $(date +'%Y-%m-%d')"
+          git push

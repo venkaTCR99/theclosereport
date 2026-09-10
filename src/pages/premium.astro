@@ -198,6 +198,9 @@ const LINKS = {
       🔒 <strong>Premium</strong> — unlocks all 10 MF NAVs, weekly summary & archive.
     </div>
     <div style="color: var(--text); font-size: 14px; line-height: 1.6;">
+      🔍 Scanner — Nifty 50 stock scanner included in every premium plan.
+    </div>
+    <div style="color: var(--text); font-size: 14px; line-height: 1.6;">
       📱 <strong>WhatsApp Report</strong> — available as an add-on or bundle.
     </div>
     </div>
@@ -287,6 +290,7 @@ const LINKS = {
               { label: t.f_mf_top10, free: false, premium: true,  bundle: true  },
               { label: t.f_weekly,   free: false, premium: true,  bundle: true  },
               { label: t.f_archive,  free: false, premium: true,  bundle: true  },
+              { label: "🔍 Nifty 50 Scanner", free: false, premium: true, bundle: true },
               { label: t.f_whatsapp, free: false, premium: false, bundle: true  },
             ].map((row, i) => (
               <tr style={`border-bottom: 1px solid var(--border); background: ${i % 2 === 0 ? 'transparent' : 'var(--surface)'}`}>

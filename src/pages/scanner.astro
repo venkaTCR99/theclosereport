@@ -1,0 +1,25 @@
+---
+// src/pages/scanner.astro
+// TheCloseReport.com — Nifty 50 Stock Scanner
+// Premium only feature. Pure data. No advice. No recommendations.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScannerReport from '../components/react/ScannerReport.jsx';
+import fs from 'fs';
+import path from 'path';
+
+// Read latest scanner data — same pattern as markets & MF
+const dataPath = path.join(process.cwd(), 'src/data/scanner/latest.json');
+
+let data = null;
+if (fs.existsSync(dataPath)) {
+  data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+}
+
+// TODO: Replace with real premium auth check
+// For now — set to false to show lock, true to show scanner
+const isPremium = false;
+---
+
+<BaseLayout title="Nifty 50 Scanner | TheCloseReport">
+  <ScannerReport data={data} isPremium={isPremium} client:load />
+</BaseLayout>
