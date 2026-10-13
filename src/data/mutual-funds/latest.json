@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-13",
-  "generated_at": "2026-10-12T22:43:06Z",
+  "date": "2026-10-14",
+  "generated_at": "2026-10-13T20:58:22Z",
   "source": "AMFI India \u00b7 www.amfiindia.com",
   "note": "NAV data published by AMFI. TheCloseReport publishes data only \u2014 no advice or recommendations.",
   "free_count": 5,
@@ -13,10 +13,10 @@
       "house": "SBI Mutual Fund",
       "category": "Large Cap",
       "tier": "free",
-      "nav": 98.2213,
-      "prev_nav": 98.7191,
-      "change": -0.4978,
-      "change_pct": -0.5
+      "nav": 99.2412,
+      "prev_nav": 98.2213,
+      "change": 1.0199,
+      "change_pct": 1.04
     },
     {
       "scheme_code": "118989",
@@ -25,10 +25,10 @@
       "house": "HDFC Mutual Fund",
       "category": "Mid Cap",
       "tier": "free",
-      "nav": 219.3,
-      "prev_nav": 219.816,
-      "change": -0.516,
-      "change_pct": -0.23
+      "nav": 221.294,
+      "prev_nav": 219.3,
+      "change": 1.994,
+      "change_pct": 0.91
     },
     {
       "scheme_code": "122639",
@@ -37,10 +37,10 @@
       "house": "PPFAS Mutual Fund",
       "category": "Flexi Cap",
       "tier": "free",
-      "nav": 88.9258,
-      "prev_nav": 87.6555,
-      "change": 1.2703,
-      "change_pct": 1.45
+      "nav": 88.5547,
+      "prev_nav": 88.9258,
+      "change": -0.3711,
+      "change_pct": -0.42
     },
     {
       "scheme_code": "120716",
@@ -49,10 +49,10 @@
       "house": "UTI Mutual Fund",
       "category": "Index",
       "tier": "free",
-      "nav": 157.4672,
-      "prev_nav": 158.5759,
-      "change": -1.1087,
-      "change_pct": -0.7
+      "nav": 159.991,
+      "prev_nav": 157.4672,
+      "change": 2.5238,
+      "change_pct": 1.6
     },
     {
       "scheme_code": "118778",
@@ -61,10 +61,10 @@
       "house": "Nippon India MF",
       "category": "Small Cap",
       "tier": "free",
-      "nav": 203.482,
-      "prev_nav": 202.2962,
-      "change": 1.1858,
-      "change_pct": 0.59
+      "nav": 203.9542,
+      "prev_nav": 203.482,
+      "change": 0.4722,
+      "change_pct": 0.23
     },
     {
       "scheme_code": "118834",
@@ -73,10 +73,10 @@
       "house": "Mirae Asset MF",
       "category": "Large Cap",
       "tier": "premium",
-      "nav": 166.984,
-      "prev_nav": 167.333,
-      "change": -0.349,
-      "change_pct": -0.21
+      "nav": 168.836,
+      "prev_nav": 166.984,
+      "change": 1.852,
+      "change_pct": 1.11
     },
     {
       "scheme_code": "120505",
@@ -85,10 +85,10 @@
       "house": "Axis Mutual Fund",
       "category": "Small Cap",
       "tier": "premium",
-      "nav": 137.73,
-      "prev_nav": 137.58,
-      "change": 0.15,
-      "change_pct": 0.11
+      "nav": 138.43,
+      "prev_nav": 137.73,
+      "change": 0.7,
+      "change_pct": 0.51
     },
     {
       "scheme_code": "127042",
@@ -97,10 +97,10 @@
       "house": "Motilal Oswal MF",
       "category": "Mid Cap",
       "tier": "premium",
-      "nav": 115.5924,
-      "prev_nav": 114.9478,
-      "change": 0.6446,
-      "change_pct": 0.56
+      "nav": 116.6107,
+      "prev_nav": 115.5924,
+      "change": 1.0183,
+      "change_pct": 0.88
     },
     {
       "scheme_code": "120586",
@@ -109,10 +109,10 @@
       "house": "ICICI Prudential MF",
       "category": "Hybrid",
       "tier": "premium",
-      "nav": 111.87,
-      "prev_nav": 112.53,
-      "change": -0.66,
-      "change_pct": -0.59
+      "nav": 113.18,
+      "prev_nav": 111.87,
+      "change": 1.31,
+      "change_pct": 1.17
     },
     {
       "scheme_code": "119533",
@@ -121,10 +121,10 @@
       "house": "Aditya Birla Sun Life",
       "category": "Large Cap",
       "tier": "premium",
-      "nav": 121.2183,
-      "prev_nav": 121.4628,
-      "change": -0.2445,
-      "change_pct": -0.2
+      "nav": 121.3329,
+      "prev_nav": 121.2183,
+      "change": 0.1146,
+      "change_pct": 0.09
     }
   ]
 }
