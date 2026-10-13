@@ -1,6 +1,6 @@
 📊 *THE CLOSE REPORT*
 ━━━━━━━━━━━━━━━━━━━
-📅 Monday, October 12, 2026
+📅 Tuesday, October 13, 2026
 
 🇺🇸 *WALL STREET*
 ╔═══════════════════╗
@@ -33,11 +33,11 @@
   Shenzhen     🔴 -2.03%
   12,385  ▼ 256.99 pts
 
-  Nikkei       🔴 -0.02%
-  69,031  ▼ 11.18 pts
+  Nikkei       🔴 -2.05%
+  67,616  ▼ 1,414.86 pts
 
-  KOSPI        🔴 -3.65%
-  6,384  ▼ 241.69 pts
+  KOSPI        🔴 -4.79%
+  6,078  ▼ 305.80 pts
 
   IDX Composite 🔴 -2.59%
   5,936  ▼ 157.61 pts
@@ -52,8 +52,8 @@
 
 🇦🇺 *AUSTRALIA*
 ╔═══════════════════╗
-  ASX 200      🟢 +0.76%
-  8,783  ▲ 66.60 pts
+  ASX 200      🔴 -0.32%
+  8,755  ▼ 28.00 pts
 
 ╚═══════════════════╝
 
@@ -82,7 +82,7 @@
 
 ━━━━━━━━━━━━━━━━━━━
 🏆 *Best:*  Bovespa +1.38%
-📉 *Worst:* KOSPI -3.65%
+📉 *Worst:* KOSPI -4.79%
 ━━━━━━━━━━━━━━━━━━━
 
 🚀 *More features coming soon!*
