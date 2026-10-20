@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-20",
-  "generated_at": "2026-10-19T20:52:22Z",
+  "date": "2026-10-21",
+  "generated_at": "2026-10-20T19:48:52Z",
   "source": "AMFI India \u00b7 www.amfiindia.com",
   "note": "NAV data published by AMFI. TheCloseReport publishes data only \u2014 no advice or recommendations.",
   "free_count": 5,
@@ -14,9 +14,9 @@
       "category": "Large Cap",
       "tier": "free",
       "nav": 99.2082,
-      "prev_nav": 100.3361,
-      "change": -1.1279,
-      "change_pct": -1.12
+      "prev_nav": 99.2082,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "118989",
@@ -26,9 +26,9 @@
       "category": "Mid Cap",
       "tier": "free",
       "nav": 219.784,
-      "prev_nav": 221.058,
-      "change": -1.274,
-      "change_pct": -0.58
+      "prev_nav": 219.784,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "122639",
@@ -37,10 +37,10 @@
       "house": "PPFAS Mutual Fund",
       "category": "Flexi Cap",
       "tier": "free",
-      "nav": 90.8844,
-      "prev_nav": 90.604,
-      "change": 0.2804,
-      "change_pct": 0.31
+      "nav": 90.3546,
+      "prev_nav": 90.8844,
+      "change": -0.5298,
+      "change_pct": -0.58
     },
     {
       "scheme_code": "120716",
@@ -50,9 +50,9 @@
       "category": "Index",
       "tier": "free",
       "nav": 161.2004,
-      "prev_nav": 163.0141,
-      "change": -1.8137,
-      "change_pct": -1.11
+      "prev_nav": 161.2004,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "118778",
@@ -62,9 +62,9 @@
       "category": "Small Cap",
       "tier": "free",
       "nav": 200.0199,
-      "prev_nav": 202.2724,
-      "change": -2.2525,
-      "change_pct": -1.11
+      "prev_nav": 200.0199,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "118834",
@@ -74,9 +74,9 @@
       "category": "Large Cap",
       "tier": "premium",
       "nav": 168.219,
-      "prev_nav": 170.064,
-      "change": -1.845,
-      "change_pct": -1.08
+      "prev_nav": 168.219,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "120505",
@@ -86,9 +86,9 @@
       "category": "Small Cap",
       "tier": "premium",
       "nav": 136.33,
-      "prev_nav": 137.41,
-      "change": -1.08,
-      "change_pct": -0.79
+      "prev_nav": 136.33,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "127042",
@@ -98,9 +98,9 @@
       "category": "Mid Cap",
       "tier": "premium",
       "nav": 113.9108,
-      "prev_nav": 114.9642,
-      "change": -1.0534,
-      "change_pct": -0.92
+      "prev_nav": 113.9108,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "120586",
@@ -110,9 +110,9 @@
       "category": "Hybrid",
       "tier": "premium",
       "nav": 113.48,
-      "prev_nav": 114.78,
-      "change": -1.3,
-      "change_pct": -1.13
+      "prev_nav": 113.48,
+      "change": 0.0,
+      "change_pct": 0.0
     },
     {
       "scheme_code": "119533",
@@ -122,9 +122,9 @@
       "category": "Large Cap",
       "tier": "premium",
       "nav": 121.2245,
-      "prev_nav": 121.1576,
-      "change": 0.0669,
-      "change_pct": 0.06
+      "prev_nav": 121.2245,
+      "change": 0.0,
+      "change_pct": 0.0
     }
   ]
 }
