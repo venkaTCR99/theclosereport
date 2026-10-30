@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-31",
+  "generated_at": "2026-10-30T20:22:59Z",
+  "source": "AMFI India \u00b7 www.amfiindia.com",
+  "note": "NAV data published by AMFI. TheCloseReport publishes data only \u2014 no advice or recommendations.",
+  "free_count": 5,
+  "premium_count": 5,
+  "funds": [
+    {
+      "scheme_code": "119598",
+      "name": "SBI Large Cap Fund",
+      "short": "SBI Bluechip",
+      "house": "SBI Mutual Fund",
+      "category": "Large Cap",
+      "tier": "free",
+      "nav": 99.5628,
+      "prev_nav": 99.3206,
+      "change": 0.2422,
+      "change_pct": 0.24
+    },
+    {
+      "scheme_code": "118989",
+      "name": "HDFC Mid Cap Fund",
+      "short": "HDFC Mid-Cap",
+      "house": "HDFC Mutual Fund",
+      "category": "Mid Cap",
+      "tier": "free",
+      "nav": 215.986,
+      "prev_nav": 217.641,
+      "change": -1.655,
+      "change_pct": -0.76
+    },
+    {
+      "scheme_code": "122639",
+      "name": "Parag Parikh Flexi Cap Fund",
+      "short": "Parag Parikh Flexi",
+      "house": "PPFAS Mutual Fund",
+      "category": "Flexi Cap",
+      "tier": "free",
+      "nav": 88.9623,
+      "prev_nav": 88.8018,
+      "change": 0.1605,
+      "change_pct": 0.18
+    },
+    {
+      "scheme_code": "120716",
+      "name": "UTI Nifty 50 Index Fund",
+      "short": "UTI Nifty 50",
+      "house": "UTI Mutual Fund",
+      "category": "Index",
+      "tier": "free",
+      "nav": 162.3751,
+      "prev_nav": 161.5569,
+      "change": 0.8182,
+      "change_pct": 0.51
+    },
+    {
+      "scheme_code": "118778",
+      "name": "Nippon India Small Cap Fund",
+      "short": "Nippon Small Cap",
+      "house": "Nippon India MF",
+      "category": "Small Cap",
+      "tier": "free",
+      "nav": 192.758,
+      "prev_nav": 196.0349,
+      "change": -3.2769,
+      "change_pct": -1.67
+    },
+    {
+      "scheme_code": "118834",
+      "name": "Mirae Asset Large & Midcap Fund",
+      "short": "Mirae Large Cap",
+      "house": "Mirae Asset MF",
+      "category": "Large Cap",
+      "tier": "premium",
+      "nav": 166.946,
+      "prev_nav": 166.938,
+      "change": 0.008,
+      "change_pct": 0.0
+    },
+    {
+      "scheme_code": "120505",
+      "name": "Axis Midcap Fund",
+      "short": "Axis Small Cap",
+      "house": "Axis Mutual Fund",
+      "category": "Small Cap",
+      "tier": "premium",
+      "nav": 136.47,
+      "prev_nav": 137.04,
+      "change": -0.57,
+      "change_pct": -0.42
+    },
+    {
+      "scheme_code": "127042",
+      "name": "Motilal Oswal Midcap Fund",
+      "short": "Motilal Midcap",
+      "house": "Motilal Oswal MF",
+      "category": "Mid Cap",
+      "tier": "premium",
+      "nav": 111.4372,
+      "prev_nav": 112.2349,
+      "change": -0.7977,
+      "change_pct": -0.71
+    },
+    {
+      "scheme_code": "120586",
+      "name": "ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund)",
+      "short": "ICICI Bal Advantage",
+      "house": "ICICI Prudential MF",
+      "category": "Hybrid",
+      "tier": "premium",
+      "nav": 113.46,
+      "prev_nav": 113.17,
+      "change": 0.29,
+      "change_pct": 0.26
+    },
+    {
+      "scheme_code": "119533",
+      "name": "Aditya Birla Sun Life Corporate Bond Fund",
+      "short": "ABSL Frontline",
+      "house": "Aditya Birla Sun Life",
+      "category": "Large Cap",
+      "tier": "premium",
+      "nav": 120.9677,
+      "prev_nav": 120.9413,
+      "change": 0.0264,
+      "change_pct": 0.02
+    }
+  ]
+}
