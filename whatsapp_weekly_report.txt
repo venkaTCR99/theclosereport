@@ -1,29 +1,29 @@
 📊 *WEEKLY CLOSE REPORT*
 ━━━━━━━━━━━━━━━━━━━
-📅 Week: 2026-11-10 → 2026-11-15
+📅 Week: 2026-11-17 → 2026-11-22
 
 🌍 *9 indices tracked*
-🟢 8 gained  |  🔴 1 declined
+🟢 0 gained  |  🔴 9 declined
 
 🏆 *TOP PERFORMERS*
 ╔═══════════════════╗
-  1. DAX            +1.53%
-  2. FTSE 100       +1.40%
-  3. CAC 40         +1.09%
+  1. Bovespa        -1.86%
+  2. FTSE 100       -3.21%
+  3. ASX 200        -3.27%
 ╚═══════════════════╝
 
 📉 *BIGGEST DECLINERS*
 ╔═══════════════════╗
-  1. ASX 200        -0.40%
-  2. Dow Jones      0.22%
-  3. Nasdaq         0.28%
+  1. Nasdaq         -6.46%
+  2. S&P 500        -5.44%
+  3. Dow Jones      -4.92%
 ╚═══════════════════╝
 
 ━━━━━━━━━━━━━━━━━━━
 📌 *Factual observations:*
-◆ DAX led gains at +1.53%
-◆ ASX 200 biggest decline at -0.40%
-◆ 8 of 9 indices closed positive for the week
+◆ Bovespa led gains at -1.86%
+◆ Nasdaq biggest decline at -6.46%
+◆ 0 of 9 indices closed positive for the week
 
 ━━━━━━━━━━━━━━━━━━━
 _For informational purposes only._
