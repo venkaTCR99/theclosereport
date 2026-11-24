@@ -1,6 +1,6 @@
 📊 *THE CLOSE REPORT*
 ━━━━━━━━━━━━━━━━━━━
-📅 Monday, November 23, 2026
+📅 Tuesday, November 24, 2026
 
 🇺🇸 *WALL STREET*
 ╔═══════════════════╗
@@ -27,33 +27,33 @@
 
 🌏 *ASIA*
 ╔═══════════════════╗
-  Shanghai     🟢 +0.15%
-  3,539  ▲ 5.16 pts
+  Shanghai     🟢 +0.47%
+  3,555  ▲ 16.54 pts
 
-  Shenzhen     🟢 +1.93%
-  10,454  ▲ 197.98 pts
+  Shenzhen     🟢 +0.92%
+  10,551  ▲ 96.50 pts
 
-  Nikkei       🔴 -5.06%
-  56,437  ▼ 3,007.55 pts
+  Nikkei       🟢 +4.03%
+  58,710  ▲ 2,273 pts
 
-  KOSPI        🔴 -3.31%
-  4,709  ▼ 161.42 pts
+  KOSPI        🟢 +7.13%
+  5,044  ▲ 335.80 pts
 
-  IDX Composite 🟢 +1.35%
-  5,216  ▲ 69.52 pts
+  IDX Composite 🟢 +1.20%
+  5,278  ▲ 62.46 pts
 
-  Hang Seng    🔴 -0.12%
-  22,384  ▼ 27.06 pts
+  Hang Seng    🔴 -0.39%
+  22,296  ▼ 87.78 pts
 
-  STI          🔴 -0.43%
-  4,954  ▼ 21.36 pts
+  STI          🟢 +0.94%
+  5,001  ▲ 46.80 pts
 
 ╚═══════════════════╝
 
 🇦🇺 *AUSTRALIA*
 ╔═══════════════════╗
-  ASX 200      🔴 -0.26%
-  8,571  ▼ 22.00 pts
+  ASX 200      🟢 +1.54%
+  8,702  ▲ 131.80 pts
 
 ╚═══════════════════╝
 
@@ -81,8 +81,8 @@
 ╚═══════════════════╝
 
 ━━━━━━━━━━━━━━━━━━━
-🏆 *Best:*  Nasdaq +6.51%
-📉 *Worst:* Nikkei -5.06%
+🏆 *Best:*  KOSPI +7.13%
+📉 *Worst:* Sensex -1.77%
 ━━━━━━━━━━━━━━━━━━━
 
 🚀 *More features coming soon!*
